@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+
+
+
+
+<head>
+	<meta charset="utf-8">
+	<title>Neural Network Optimization Methods and Algorithms - The Vera Breen - Author</title>
+	<link rel="canonical" href="http://localhost:4000/neural-network-optimization-methods.html">
+	<meta name="description" content="Some neural network optimization algorithms mostly to implement momentum when doing back propagation.">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:4000"},
+  "headline": "Neural Network Optimization Methods and Algorithms",
+  "abstract": "Some neural network optimization algorithms mostly to implement momentum when doing back propagation.",
+    "keywords": "coding, machine learning, optimization, deep Neural networks",
+    "wordcount": "1696",
+    "image": ["http://localhost:4000/assets/imgposts/20210312/nnet_optimization.jpg"],
+  "datePublished": "2021-03-12 12:32:20 -0700",
+  "dateModified": "2021-03-12 12:32:20 -0700",
+  "author": {
+    "@type": "Person",
+    "name": "Armando Maynez"},
+  "publisher": {
+    "@type":  "Organization",
+    "logo": {
+        "@type": "ImageObject",
+        "encodingFormat": "image/png",
+        "contentUrl": "http://localhost:4000/assets/img/branding/MVM-symbol-black.png",
+        "url": "http://localhost:4000/assets/img/branding/MVM-symbol-black.png"},
+    "name" : "The Vera Breen - Author"}
+}
+</script>
+<!-- Open Graph data -->
+<meta property="og:url" content="http://localhost:4000/neural-network-optimization-methods.html"/>
+<meta property="og:type" content="article"/>
+<meta property="og:title" content="Neural Network Optimization Methods and Algorithms"/>
+<meta property="og:description" content="Some neural network optimization algorithms mostly to implement momentum when doing back propagation."/>
+<meta property="og:image" content="http://localhost:4000/assets/imgposts/20210312/nnet_optimization.jpg"/>
+<meta property="og:image:alt" content="Neural Network Optimization Methods and Algorithms"/>
+<meta property="og:site_name" content="The Vera Breen - Author" />
+<meta property="article:published_time" content="2021-03-12 12:32:20 -0700" />
+<meta property="article:modified_time" content="2021-03-12 12:32:20 -0700" />
+<meta property="article:tag" content="coding, machine learning, optimization, deep Neural networks" />
+<meta property="fb:admins" content="ar.maybach" />
+<!-- Schema.org markup for Google -->
+<meta itemprop="name" content="Neural Network Optimization Methods and Algorithms">
+<meta itemprop="description" content="Some neural network optimization algorithms mostly to implement momentum when doing back propagation.">
+<meta itemprop="image" content="http://localhost:4000/assets/imgposts/20210312/nnet_optimization.jpg">
+<!-- Twitter Card data -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+<meta name="twitter:title" content="Neural Network Optimization Methods and Algorithms">
+<meta name="twitter:description" content="Some neural network optimization algorithms mostly to implement momentum when doing back propagation.">
+<meta name="twitter:creator" content="">
+<meta data-rh="true" name="twitter:label1" content="Word count"/>
+<meta data-rh="true" name="twitter:data1" content="1696"/>
+<meta name="twitter:image:src" content="http://localhost:4000/assets/img/posts/20210312/nnet_optimization.jpg">
+	<!-- Windows Phone -->
+	<meta name="msapplication-navbutton-color" content="#311e3e">
+	<!-- iOS Safari -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="#311e3e">
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.gstatic.com" />
+	<style>
+/* latin */
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/lora/v17/0QIvMX1D_JOuMwr7I_FMl_E.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 600;
+  src: url(https://fonts.gstatic.com/s/lora/v17/0QIvMX1D_JOuMwr7I_FMl_E.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 200;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3i94_wlxdu3cOWxw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7lujVj9w.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwlxdu3cOWxw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+	</style>
+	<!-- <link href="https://fonts.googleapis.com/css?family=Lora:400,600|Source+Sans+Pro:200,400,700" rel="stylesheet"> -->
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="./assets/fonts/font-awesome/css/font-awesome.min.css">
+	<!-- Styles -->
+	<link rel="stylesheet" href="./assets/css/main.css">
+	
+
+
+
+
+<link rel="icon" href="./assets/img/favicon/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="./assets/img/favicon/favicon.ico">
+<link rel="apple-touch-icon" sizes="72x72" href="./assets/img/favicon/favicon.ico">
+<link rel="apple-touch-icon" sizes="114x114" href="./assets/img/favicon/favicon.ico">
+	
+	<link rel="stylesheet" href="./assets/css/highlighter/syntax-base16.monokai.dark.css">
+	
+</head>
+
+  <body>
+    
+
+
+
+
+<section class="hidden">
+  <div class="post">
+      <a  class="post-list-title" href="./neural-network-optimization-methods.html">Neural Network Optimization Methods and Algorithms</a>
+      
+
+  <span class = "post-card-meta">
+  
+  
+    <span class="meta-pre"></span>
+  
+  
+    
+      
+      <span class="page_meta-date">
+        <time datetime="2021-03-12T12:32:20-07:00">March 12, 2021</time>
+      </span>
+    
+    
+      <span class="meta-sep"></span>
+    
+  
+  
+    
+    
+    <span class="page_meta-readtime">
+      
+        8 minute read
+      
+    </span>
+  
+  
+  </span>
+
+        <div class="post-excerpt">
+            <p>For the seemingly small project I undertook of <a href="./deep-q-learning-tic-tac-toe.html">creating a machine learning neural network that could learn by itself to play tic-tac-toe</a>, I bumped into the necesity of implementing at least one momentum algorithm for the optimization of the network during backpropagation.</p><p>And since my original post for the TicTacToe project is quite large already, I decided to post separately these optimization methods and how did I implement them in my code.</p><h3 id="adam">Adam</h3><p><a href="https://ruder.io/optimizing-gradient-descent/index.html#adam">source</a></p><p>Adaptive Moment Estimation (Adam) is an optimization method that computes adaptive learning rates for each weight and bias. In addition to storing an exponentially decaying average of...<a class="read-more" href="./neural-network-optimization-methods.html"> read more</a>
+        </div>
+  </div>
+</section>
+<div class="flex-container transparent">
+  
+
+
+
+
+<header class="main-header">
+  <div class="wrapper">
+    <div class="header-flex">
+      <div class="menu-icon-container">
+        <span class="menu-icon"><i class="fa fa-bars" aria-hidden="true"></i></span>
+      </div>
+      <nav class="main-nav">
+        <span class="menu-icon-close"><i class="fa fa-times" aria-hidden="true"></i></span>
+        <ul>
+          <li>
+            <div class="theme-toggle night">
+    <input class="night" type="checkbox" id="theme-switch">
+</div>
+          </li>
+          <li>
+            <a href="./">
+              <div class="left">
+                Home
+              </div>  
+              <div class="right">
+                <svg width="24px" aria-hidden="true" focusable="false" role="img" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g><rect x="83.534" y="40.929" width="3.997" height="20.071"/></g><path d="M16.466,41.931l33.548-25.123L92.81,48.877l2.396-3.198L50.015,11.814L4.794,45.679l2.396,3.199l5.279-3.954v42.763h75.062  V61h-3.997v22.69H64.598V54.068H35.402V83.69H16.466V41.931z M39.399,58.065h21.202V83.69H39.399V58.065z"/></svg>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="./books.html">
+              <div class="left">
+              Books
+              </div>
+              <div class="right">
+                <svg width="24px" aria-hidden="true" focusable="false" role="img" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g><path d="M75.244,15.066c-2.59,0-5.027,1.012-6.857,2.843c-3.781,3.785-3.778,9.94,0.002,13.724    c1.831,1.833,4.266,2.843,6.857,2.843s5.026-1.01,6.861-2.843c3.781-3.785,3.781-9.943-0.002-13.724    C80.275,16.076,77.838,15.066,75.244,15.066z M78.766,28.252c-1.871,1.869-5.129,1.869-6.996,0c-1.929-1.931-1.931-5.069-0.002-7    c0.934-0.934,2.175-1.448,3.498-1.448c1.322,0,2.564,0.515,3.5,1.448C80.691,23.183,80.691,26.321,78.766,28.252z M94.632,41.027    l0.005-28.872c0-3.745-3.05-6.792-6.792-6.792L58.973,5.368l-1.237-0.004c-1.893,0-4.75,0-6.617,1.869L7.008,51.342    c-1.06,1.059-1.645,2.467-1.645,3.966s0.583,2.908,1.644,3.968l33.717,33.717c1.058,1.06,2.467,1.645,3.966,1.645    s2.908-0.585,3.968-1.645l44.106-44.111c1.893-1.886,1.88-4.604,1.869-7.227L94.632,41.027z M90.022,46.139L45.913,90.25    c-0.654,0.65-1.792,0.652-2.443,0L9.752,56.532c-0.328-0.327-0.507-0.762-0.507-1.225c0-0.462,0.18-0.894,0.507-1.221    L53.861,9.976c0.676-0.674,2.284-0.731,3.874-0.731l1.237,0.004l28.872-0.004c1.604,0,2.909,1.306,2.909,2.911l-0.005,28.872    l0.005,0.642C90.76,43.585,90.769,45.392,90.022,46.139z"/></g></svg>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="./archive.html">
+              <div class="left">
+                Blog
+              </div>
+              <div class="right">
+                <svg width="24px" aria-hidden="true" focusable="false" role="img" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="-3 3 64 64"><g><path d="M60.992,31.985c0-15.979-13-28.978-28.979-28.978c-15.994,0-29.006,12.999-29.006,28.978   c0,15.994,13.012,29.007,29.006,29.007v-2c-14.891,0-27.006-12.115-27.006-27.007c0-14.875,12.115-26.978,27.006-26.978   c14.876,0,26.979,12.103,26.979,26.978c0,8.945-4.479,17.329-11.804,22.338l0.874-10.062l-1.992-0.174l-1.135,13.071l13.042,1.136   l0.174-1.992l-9.183-0.799C56.443,50.079,60.992,41.321,60.992,31.985z"/><polygon points="33.014,12.682 31.014,12.682 31.014,32.398 39.811,41.224 41.227,39.812 33.014,31.572  "/></g></svg>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="./about.html">
+              <div class="left">
+                About
+              </div>
+              <div class="right">
+                <svg width='24px' aria-hidden="true" focusable="false" role="img" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 846.66 846.66"><g><path d="M351.26 453.22c-276.42,134.06 -224.86,336.22 -224.73,336.8 6.03,25.41 -32.58,34.56 -38.6,9.15 -0.15,-0.65 -55.78,-219.32 218.87,-367.66 -60.98,-39 -100.02,-106.82 -100.02,-182.56 0,-119.6 96.95,-216.55 216.55,-216.55 119.6,0 216.55,96.95 216.55,216.55 0,75.74 -39.04,143.56 -100.02,182.56 274.65,148.34 219.02,367.01 218.87,367.66 -6.02,25.41 -44.63,16.26 -38.6,-9.15 0.13,-0.58 51.69,-202.74 -224.73,-336.8 -22.55,7.96 -46.8,12.29 -72.07,12.29 -25.27,0 -49.52,-4.33 -72.07,-12.29zm72.07 -381.14c-97.68,0 -176.87,79.19 -176.87,176.87 0,97.69 79.19,176.87 176.87,176.87 97.68,0 176.87,-79.18 176.87,-176.87 0,-97.68 -79.19,-176.87 -176.87,-176.87z"/></g></svg>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      
+      
+      <div class="logo"><a href="./"><img class="logo" id="logo" src="./assets/img/branding/MVM-logo-full.svg" alt="The Vera Breen - Author"></a></div>
+      <div class="search-icon-container">
+        <span class="search-icon"><a><i class="fa fa-search" aria-hidden="true"></i></a></span>
+      </div>
+    </div>
+  </div>
+</header> <!-- End Header -->
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Neural Network Optimization Methods and Algorithms">
+<meta itemprop="description" content="Some neural network optimization algorithms mostly to implement momentum when doing back propagation.">
+<meta itemprop="datePublished" content="2021-03-12T12:32:20-07:00">
+
+    <div class="page-image">
+      <div class="cover-image" style="background: url('./assets/img/posts/20210312/nnet_optimization.jpg') center no-repeat; background-size: cover;"></div>
+    </div>
+    <div class="wrapper">
+      <div class="page-content">
+        <div class="header-page">
+          <h1 class="page-title">Neural Network Optimization Methods and Algorithms</h1>
+          
+
+  <span class = "post-page-meta">
+  
+    <p class="page_meta">
+  
+  
+  
+    
+      
+      <span class="page_meta-date">
+        <time datetime="2021-03-12T12:32:20-07:00">March 12, 2021</time>
+      </span>
+    
+    
+      <span class="meta-sep"></span>
+    
+  
+  
+    
+    
+    <span class="page_meta-readtime">
+      
+        8 minute read
+      
+    </span>
+  
+  
+    </p>
+  
+  </span>
+
+        </div>
+        <aside class="sidebar side" id="sidebar">
+    
+
+
+
+<div class="tag-cloud">
+    
+        <ul class="tags side">
+            
+                <li><a href="./tag.html?tag=coding" class="tag side">coding</a></li>
+            
+                <li><a href="./tag.html?tag=machine+learning" class="tag side">machine learning</a></li>
+            
+                <li><a href="./tag.html?tag=optimization" class="tag side">optimization</a></li>
+            
+                <li><a href="./tag.html?tag=deep+Neural+networks" class="tag side">deep Neural networks</a></li>
+            
+    
+        </ul>
+</div>
+    <div class="share-options side">
+    <div class="share-hover side">
+        <span class="share-button side"><svg fill="currentColor" width="25" height="25" class="side"><g fill-rule="evenodd"><path d="M15.6 5a.42.42 0 0 0 .17-.3.42.42 0 0 0-.12-.33l-2.8-2.79a.5.5 0 0 0-.7 0l-2.8 2.8a.4.4 0 0 0-.1.32c0 .12.07.23.16.3h.02a.45.45 0 0 0 .57-.04l2-2V10c0 .28.23.5.5.5s.5-.22.5-.5V2.93l2.02 2.02c.08.07.18.12.3.13.11.01.21-.02.3-.08v.01"></path><path d="M18 7h-1.5a.5.5 0 0 0 0 1h1.6c.5 0 .9.4.9.9v10.2c0 .5-.4.9-.9.9H6.9a.9.9 0 0 1-.9-.9V8.9c0-.5.4-.9.9-.9h1.6a.5.5 0 0 0 .35-.15A.5.5 0 0 0 9 7.5a.5.5 0 0 0-.15-.35A.5.5 0 0 0 8.5 7H7a2 2 0 0 0-2 2v10c0 1.1.9 2 2 2h11a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2"></path></g></svg></span>
+        <div class="share-icons side" id="sidebar-icons">
+            <a class="twitter" href="https://twitter.com/intent/tweet?text=Neural Network Optimization Methods and Algorithms&url=http://localhost:4000/neural-network-optimization-methods.html" title="Share on Twitter" rel="nofollow" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a class="facebook" href="https://facebook.com/sharer.php?u=http://localhost:4000/neural-network-optimization-methods.html" title="Share on Facebook" rel="nofollow" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a class="reddit" href="http://www.reddit.com/submit?url=http://localhost:4000/neural-network-optimization-methods.html&title=Neural Network Optimization Methods and Algorithms" title="Submit to Reddit" rel="nofollow" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a>
+            <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/neural-network-optimization-methods.html&title=Neural Network Optimization Methods and Algorithms&summary=Some neural network optimization algorithms mostly to implement momentum when doing back propagation.&source=http://localhost:4000/neural-network-optimization-methods.html" title="Share on LinkedIn" rel="nofollow" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+            <a class="email" href="mailto:?subject=Neural Network Optimization Methods and Algorithms&body=Some neural network optimization algorithms mostly to implement momentum when doing back propagation.%0A%0ARead more here: http://localhost:4000/neural-network-optimization-methods.html" title="Share via e-mail" rel="nofollow" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+            <a class="copy-link" onclick="copyToClipboard()" title="Copy to clipboard" rel="nofollow" target="_blank"><svg width="20px" fill="currentColor" class="side" viewBox="0 0 18 18"><path d="M16.94 1.1A3.7 3.7 0 0 0 14.3 0c-1 0-1.94.39-2.64 1.1L7.43 5.3c-.91.92-2.09 3.2 0 5.27a.75.75 0 0 0 .82.16c.09-.03.17-.09.24-.15a.74.74 0 0 0 0-1.06c-1.16-1.15-.77-2.39-.02-3.16l4.24-4.22a2.2 2.2 0 0 1 1.58-.65c.6 0 1.16.23 1.58.65.86.87.86 2.29 0 3.16L12.7 8.47a.74.74 0 0 0 1.04 1.05l3.17-3.16a3.73 3.73 0 0 0 0-5.27h.03zM9.54 7.4a.74.74 0 0 0 0 1.06c1.16 1.15.76 2.39 0 3.16l-4.22 4.22c-.42.42-.99.65-1.59.65a2.23 2.23 0 0 1-1.58-3.82l3.17-3.16A.73.73 0 0 0 5.54 9a.78.78 0 0 0-.22-.52.77.77 0 0 0-1.05 0L1.1 11.64A3.72 3.72 0 0 0 3.74 18c1 0 1.94-.39 2.65-1.1l4.23-4.2c.21-.22.94-1.02 1.13-2.2.18-1.12-.2-2.15-1.12-3.07-.27-.27-.78-.27-1.06 0l-.02-.02z" clip-rule="evenodd" fill-rule="evenodd"></path></svg></a>
+        </div>
+    </div>
+    <div class='alert' style='font-size:.6em;color:var(--accent);text-align:center;'></div>
+</div>
+</aside>
+
+        <aside class="toc">
+  <nav class="toc-nav">
+    <li class="toc-title">
+      <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="align-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-align-left fa-w-14 fa-2x"><g class="fa-group"><path fill="currentColor" d="M12.83 352h262.34A12.82 12.82 0 0 0 288 339.17v-38.34A12.82 12.82 0 0 0 275.17 288H12.83A12.82 12.82 0 0 0 0 300.83v38.34A12.82 12.82 0 0 0 12.83 352zm0-256h262.34A12.82 12.82 0 0 0 288 83.17V44.83A12.82 12.82 0 0 0 275.17 32H12.83A12.82 12.82 0 0 0 0 44.83v38.34A12.82 12.82 0 0 0 12.83 96z" class="fa-secondary"></path><path fill="currentColor" d="M432 160H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0 256H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16z" class="fa-primary"></path></g></svg>
+    </li>
+    <ul class="toc-content" id="toc-content"><li class="toc-item-1"><a href="#adam">Adam</a></li><li class="toc-item-1"><a href="#sgd-momentum">SGD Momentum</a></li><li class="toc-item-1"><a href="#nesterov-accelerated-gradient-nag">Nesterov accelerated gradient (NAG)</a></li><li class="toc-item-1"><a href="#rmsprop">RMSprop</a></li><li class="toc-item-1"><a href="#complete-code">Complete code</a></li></ul>
+  </nav>
+</aside>
+
+        
+<div class="center-container">
+  <div class="github-button">
+    <span class="button-icon" aria-hidden="true"><svg aria-hidden="true" focusable="false" role="img" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,2.2467A10.00042,10.00042,0,0,0,8.83752,21.73419c.5.08752.6875-.21247.6875-.475,0-.23749-.01251-1.025-.01251-1.86249C7,19.85919,6.35,18.78423,6.15,18.22173A3.636,3.636,0,0,0,5.125,16.8092c-.35-.1875-.85-.65-.01251-.66248A2.00117,2.00117,0,0,1,6.65,17.17169a2.13742,2.13742,0,0,0,2.91248.825A2.10376,2.10376,0,0,1,10.2,16.65923c-2.225-.25-4.55-1.11254-4.55-4.9375a3.89187,3.89187,0,0,1,1.025-2.6875,3.59373,3.59373,0,0,1,.1-2.65s.83747-.26251,2.75,1.025a9.42747,9.42747,0,0,1,5,0c1.91248-1.3,2.75-1.025,2.75-1.025a3.59323,3.59323,0,0,1,.1,2.65,3.869,3.869,0,0,1,1.025,2.6875c0,3.83747-2.33752,4.6875-4.5625,4.9375a2.36814,2.36814,0,0,1,.675,1.85c0,1.33752-.01251,2.41248-.01251,2.75,0,.26251.1875.575.6875.475A10.0053,10.0053,0,0,0,12,2.2467Z"/></svg></span>
+    <a class="button-text" href="https://github.com/amaynez/TicTacToe/blob/7bf83b3d5c10adccbeb11bf244fe0af8d9d7b036/entities/Neural_Network.py#L199" target="_blank" aria-label="Open on GitHub">view on <b>GitHub</b></a>
+  </div>
+</div>
+
+        <p>For the seemingly small project I undertook of <a href="./deep-q-learning-tic-tac-toe.html">creating a machine learning neural network that could learn by itself to play tic-tac-toe</a>, I bumped into the necesity of implementing at least one momentum algorithm for the optimization of the network during backpropagation.</p>
+
+<p>And since my original post for the TicTacToe project is quite large already, I decided to post separately these optimization methods and how did I implement them in my code.</p>
+
+<h3 id="adam">Adam</h3>
+<p><a href="https://ruder.io/optimizing-gradient-descent/index.html#adam">source</a></p>
+
+<p>Adaptive Moment Estimation (Adam) is an optimization method that computes adaptive learning rates for each weight and bias. In addition to storing an exponentially decaying average of past squared gradients \(v_t\) and an exponentially decaying average of past gradients \(m_t\), similar to momentum. Whereas momentum can be seen as a ball running down a slope, Adam behaves like a heavy ball with friction, which thus prefers flat minima in the error surface. We compute the decaying averages of past and past squared gradients \(m_t\) and \(v_t\) respectively as follows:</p>
+<p style="text-align:center">\(<br />
+\begin{align}<br />
+\begin{split}<br />
+m_t &amp;= \beta_1 m_{t-1} + (1 - \beta_1) g_t \\<br />
+v_t &amp;= \beta_2 v_{t-1} + (1 - \beta_2) g_t^2<br />
+\end{split}<br />
+\end{align}<br />
+\)</p>
+<p>\(m_t\) and \(v_t\) are estimates of the first moment (the mean) and the second moment (the uncentered variance) of the gradients respectively, hence the name of the method. As \(m_t\) and \(v_t\) are initialized as vectors of 0's, the authors of Adam observe that they are biased towards zero, especially during the initial time steps, and especially when the decay rates are small (i.e. \(\beta_1\) and \(\beta_2\) are close to 1).</p>
+<p>They counteract these biases by computing bias-corrected first and second moment estimates:</p>
+<p style="text-align:center">\(<br />
+\begin{align}<br />
+\begin{split}<br />
+\hat{m}_t &amp;= \dfrac{m_t}{1 - \beta^t_1} \\<br />
+\hat{v}_t &amp;= \dfrac{v_t}{1 - \beta^t_2} \end{split}<br />
+\end{align}<br />
+\)</p>
+<p>We then use these to update the weights and biases which yields the Adam update rule:</p>
+<p style="text-align:center">\(\theta_{t+1} = \theta_{t} - \dfrac{\eta}{\sqrt{\hat{v}_t} + \epsilon} \hat{m}_t\).</p>
+<p>The authors propose defaults of 0.9 for \(\beta_1\), 0.999 for \(\beta_2\), and \(10^{-8}\) for \(\epsilon\).</p>
+<p><a href="https://github.com/amaynez/TicTacToe/blob/b429e5637fe5f61e997f04c01422ad0342565640/entities/Neural_Network.py#L243">view on github</a></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># decaying averages of past gradients
+</span><span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="p">((</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span>
+                        <span class="o">*</span> <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+                        <span class="o">+</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">c</span><span class="p">.</span><span class="n">BETA1</span><span class="p">)</span>
+                        <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                        <span class="p">))</span>
+<span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="p">((</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span>
+                        <span class="o">*</span> <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+                        <span class="o">+</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">c</span><span class="p">.</span><span class="n">BETA1</span><span class="p">)</span>
+                        <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">bias_gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                        <span class="p">))</span>
+
+<span class="c1"># decaying averages of past squared gradients
+</span><span class="n">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="p">((</span><span class="n">c</span><span class="p">.</span><span class="n">BETA2</span>
+                        <span class="o">*</span> <span class="n">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span><span class="o">+</span><span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+                        <span class="o">+</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">c</span><span class="p">.</span><span class="n">BETA2</span><span class="p">)</span>
+                        <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">square</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])))</span>
+                         <span class="p">))</span>
+<span class="n">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="p">((</span><span class="n">c</span><span class="p">.</span><span class="n">BETA2</span>
+                        <span class="o">*</span> <span class="n">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+                        <span class="o">+</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">c</span><span class="p">.</span><span class="n">BETA2</span><span class="p">)</span>
+                        <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">square</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span>
+                                         <span class="n">self</span><span class="p">.</span><span class="n">bias_gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])))</span>
+                         <span class="p">))</span>
+
+<span class="k">if</span> <span class="n">c</span><span class="p">.</span><span class="n">ADAM_BIAS_Correction</span><span class="p">:</span>
+    <span class="c1"># bias-corrected first and second moment estimates
+</span>    <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
+                          <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span> <span class="o">**</span> <span class="n">true_epoch</span><span class="p">))</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
+                          <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span> <span class="o">**</span> <span class="n">true_epoch</span><span class="p">))</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
+                          <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">BETA2</span> <span class="o">**</span> <span class="n">true_epoch</span><span class="p">))</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
+                          <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">BETA2</span> <span class="o">**</span> <span class="n">true_epoch</span><span class="p">))</span>
+
+<span class="c1"># apply to weights and biases
+</span><span class="n">weight_col</span> <span class="o">-=</span> <span class="p">((</span><span class="n">eta</span> <span class="o">*</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
+                      <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+                      <span class="o">+</span> <span class="n">c</span><span class="p">.</span><span class="n">EPSILON</span><span class="p">))))</span>
+<span class="n">self</span><span class="p">.</span><span class="n">bias</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="p">((</span><span class="n">eta</span> <span class="o">*</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
+                        <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+                        <span class="o">+</span> <span class="n">c</span><span class="p">.</span><span class="n">EPSILON</span><span class="p">))))</span>
+</code></pre></div></div>
+
+<h3 id="sgd-momentum">SGD Momentum</h3>
+<p><a href="https://ruder.io/optimizing-gradient-descent/index.html#momentum">source</a></p>
+
+<p>Vanilla SGD has trouble navigating ravines, i.e. areas where the surface curves much more steeply in one dimension than in another, which are common around local optima. In these scenarios, SGD oscillates across the slopes of the ravine while only making hesitant progress along the bottom towards the local optimum.</p>
+<p>Momentum is a method that helps accelerate SGD in the relevant direction and dampens oscillations. It does this by adding a fraction \(\gamma\) of the update vector of the past time step to the current update vector:</p>
+<p style="text-align:center">\(<br />
+\begin{align}<br />
+\begin{split}<br />
+v_t &amp;= \beta_1 v_{t-1} + \eta \nabla_\theta J( \theta) \\<br />
+\theta &amp;= \theta - v_t<br />
+\end{split}<br />
+\end{align}<br />
+\)</p>
+<p>The momentum term \(\beta_1\) is usually set to 0.9 or a similar value.</p>
+<p>Essentially, when using momentum, we push a ball down a hill. The ball accumulates momentum as it rolls downhill, becoming faster and faster on the way (until it reaches its terminal velocity if there is air resistance, i.e. \(\beta_1 &lt; 1\)). The same thing happens to our weight and biases updates: The momentum term increases for dimensions whose gradients point in the same directions and reduces updates for dimensions whose gradients change directions. As a result, we gain faster convergence and reduced oscillation.</p>
+<p><a href="https://github.com/amaynez/TicTacToe/blob/b429e5637fe5f61e997f04c01422ad0342565640/entities/Neural_Network.py#L210">view on github</a></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span><span class="o">+</span><span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="p">((</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span><span class="o">*</span><span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+                       <span class="o">+</span><span class="p">(</span><span class="n">eta</span><span class="o">*</span><span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                       <span class="p">))</span>
+<span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span><span class="o">+</span><span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="p">((</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span><span class="o">*</span><span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+                       <span class="o">+</span><span class="p">(</span><span class="n">eta</span><span class="o">*</span><span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">bias_gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                       <span class="p">))</span>
+
+<span class="n">weight_col</span> <span class="o">-=</span> <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
+<span class="n">self</span><span class="p">.</span><span class="n">bias</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
+</code></pre></div></div>
+
+<h3 id="nesterov-accelerated-gradient-nag">Nesterov accelerated gradient (NAG)</h3>
+<p><a href="https://ruder.io/optimizing-gradient-descent/index.html#nesterovacceleratedgradient">source</a></p>
+
+<p>However, a ball that rolls down a hill, blindly following the slope, is highly unsatisfactory. We'd like to have a smarter ball, a ball that has a notion of where it is going so that it knows to slow down before the hill slopes up again.</p>
+<p>Nesterov accelerated gradient (NAG) is a way to give our momentum term this kind of prescience. We know that we will use our momentum term \(\beta_1 v_{t-1}\) to move the weights and biases \(\theta\). Computing \( \theta - \beta_1 v_{t-1} \) thus gives us an approximation of the next position of the weights and biases (the gradient is missing for the full update), a rough idea where our weights and biases are going to be. We can now effectively look ahead by calculating the gradient not w.r.t. to our current weights and biases \(\theta\) but w.r.t. the approximate future position of our weights and biases:</p>
+<p style="text-align:center">\(<br />
+\begin{align}<br />
+\begin{split}<br />
+v_t &amp;= \beta_1 v_{t-1} + \eta \nabla_\theta J( \theta - \beta_1 v_{t-1} ) \\<br />
+\theta &amp;= \theta - v_t<br />
+\end{split}<br />
+\end{align}<br />
+\)</p>
+<p>Again, we set the momentum term \(\beta_1\) to a value of around 0.9. While Momentum first computes the current gradient and then takes a big jump in the direction of the updated accumulated gradient, NAG first makes a big jump in the direction of the previous accumulated gradient, measures the gradient and then makes a correction, which results in the complete NAG update. This anticipatory update prevents us from going too fast and results in increased responsiveness, which has significantly increased the performance of Neural Networks on a number of tasks.</p>
+<p>Now that we are able to adapt our updates to the slope of our error function and speed up SGD in turn, we would also like to adapt our updates to each individual weight and bias to perform larger or smaller updates depending on their importance.</p>
+<p><a href="https://github.com/amaynez/TicTacToe/blob/b429e5637fe5f61e997f04c01422ad0342565640/entities/Neural_Network.py#L219">view on github</a></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">v_prev</span> <span class="o">=</span> <span class="p">{</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">):</span> <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)],</span>
+          <span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">):</span> <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]}</span>
+
+<span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span>
+            <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">NAG_COEFF</span> <span class="o">*</span> <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
+           <span class="o">-</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">gradients</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+<span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span>
+            <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">NAG_COEFF</span> <span class="o">*</span> <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
+           <span class="o">-</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">bias_gradients</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+<span class="n">weight_col</span> <span class="o">+=</span> <span class="p">((</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">c</span><span class="p">.</span><span class="n">BETA1</span> <span class="o">*</span> <span class="n">v_prev</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+               <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">c</span><span class="p">.</span><span class="n">BETA1</span><span class="p">)</span> <span class="o">*</span> <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+<span class="n">self</span><span class="p">.</span><span class="n">bias</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="p">((</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">c</span><span class="p">.</span><span class="n">BETA1</span> <span class="o">*</span> <span class="n">v_prev</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+               <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">c</span><span class="p">.</span><span class="n">BETA1</span><span class="p">)</span> <span class="o">*</span> <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+</code></pre></div></div>
+
+<h3 id="rmsprop">RMSprop</h3>
+<p><a href="https://ruder.io/optimizing-gradient-descent/index.html#rmsprop">source</a></p>
+
+<p>RMSprop is an unpublished, adaptive learning rate method proposed by Geoff Hinton in <a href="http://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf">Lecture 6e of his Coursera Class</a>.</p>
+<p>RMSprop was developed stemming from the need to resolve other method's radically diminishing learning rates.</p>
+<p style="text-align:center">\(<br />
+\begin{align}<br />
+\begin{split}<br />
+E[\theta^2]_t &amp;= \beta_1 E[\theta^2]_{t-1} + (1-\beta_1) \theta^2_t \\<br />
+\theta_{t+1} &amp;= \theta_{t} - \dfrac{\eta}{\sqrt{E[\theta^2]_t + \epsilon}} \theta_{t}<br />
+\end{split}<br />
+\end{align}<br />
+\)</p>
+<p>RMSprop divides the learning rate by an exponentially decaying average of squared gradients. Hinton suggests \(\beta_1\) to be set to 0.9, while a good default value for the learning rate \(\eta\) is 0.001.</p>
+<p><a href="https://github.com/amaynez/TicTacToe/blob/b429e5637fe5f61e997f04c01422ad0342565640/entities/Neural_Network.py#L232">view on github</a></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="p">((</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span>
+                      <span class="o">*</span> <span class="n">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+                      <span class="o">+</span> <span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span><span class="p">)</span>
+                      <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">square</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])))</span>
+                        <span class="p">))</span>
+<span class="n">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="p">((</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span>
+                      <span class="o">*</span> <span class="n">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+                      <span class="o">+</span> <span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span><span class="p">)</span>
+                      <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">square</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">bias_gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])))</span>
+                        <span class="p">))</span>
+
+<span class="n">weight_col</span> <span class="o">-=</span> <span class="p">(</span><span class="n">eta</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+              <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span><span class="o">+</span><span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span><span class="o">+</span><span class="n">c</span><span class="p">.</span><span class="n">EPSILON</span><span class="p">)))</span>
+              <span class="p">)</span>
+<span class="n">self</span><span class="p">.</span><span class="n">bias</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="p">(</span><span class="n">eta</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">bias_gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+               <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span><span class="o">+</span><span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span><span class="o">+</span><span class="n">c</span><span class="p">.</span><span class="n">EPSILON</span><span class="p">)))</span>
+                <span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="complete-code">Complete code</h3>
+<p>All in all the code ended up like this:
+<a href="https://github.com/amaynez/TicTacToe/blob/b429e5637fe5f61e997f04c01422ad0342565640/entities/Neural_Network.py#L1">view on github</a></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@staticmethod</span>
+<span class="k">def</span> <span class="nf">cyclic_learning_rate</span><span class="p">(</span><span class="n">learning_rate</span><span class="p">,</span> <span class="n">epoch</span><span class="p">):</span>
+    <span class="n">max_lr</span> <span class="o">=</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">c</span><span class="p">.</span><span class="n">MAX_LR_FACTOR</span>
+    <span class="n">cycle</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">floor</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">epoch</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span>
+                    <span class="o">*</span> <span class="n">c</span><span class="p">.</span><span class="n">LR_STEP_SIZE</span><span class="p">))</span>
+                    <span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">abs</span><span class="p">((</span><span class="n">epoch</span> <span class="o">/</span> <span class="n">c</span><span class="p">.</span><span class="n">LR_STEP_SIZE</span><span class="p">)</span>
+        <span class="o">-</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">cycle</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">learning_rate</span>
+        <span class="o">+</span> <span class="p">(</span><span class="n">max_lr</span> <span class="o">-</span> <span class="n">learning_rate</span><span class="p">)</span>
+        <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="nf">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">apply_gradients</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">epoch</span><span class="p">):</span>
+    <span class="n">true_epoch</span> <span class="o">=</span> <span class="n">epoch</span> <span class="o">-</span> <span class="n">c</span><span class="p">.</span><span class="n">BATCH_SIZE</span>
+    <span class="n">eta</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">learning_rate</span>
+            <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">c</span><span class="p">.</span><span class="n">DECAY_RATE</span> <span class="o">*</span> <span class="n">true_epoch</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">c</span><span class="p">.</span><span class="n">CLR_ON</span><span class="p">:</span>
+        <span class="n">eta</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">cyclic_learning_rate</span><span class="p">(</span><span class="n">eta</span><span class="p">,</span> <span class="n">true_epoch</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">weight_col</span> <span class="ow">in</span> <span class="nf">enumerate</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">weights</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="n">c</span><span class="p">.</span><span class="n">OPTIMIZATION</span> <span class="o">==</span> <span class="sh">'</span><span class="s">vanilla</span><span class="sh">'</span><span class="p">:</span>
+            <span class="n">weight_col</span> <span class="o">-=</span> <span class="n">eta</span>
+                        <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                        <span class="o">/</span> <span class="n">c</span><span class="p">.</span><span class="n">BATCH_SIZE</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">bias</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="n">eta</span>
+                        <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">bias_gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                        <span class="o">/</span> <span class="n">c</span><span class="p">.</span><span class="n">BATCH_SIZE</span>
+
+        <span class="k">elif</span> <span class="n">c</span><span class="p">.</span><span class="n">OPTIMIZATION</span> <span class="o">==</span> <span class="sh">'</span><span class="s">SGD_momentum</span><span class="sh">'</span><span class="p">:</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span><span class="o">+</span><span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="p">((</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span>
+                                   <span class="o">*</span><span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+                                   <span class="o">+</span><span class="p">(</span><span class="n">eta</span>
+                                   <span class="o">*</span><span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                                   <span class="p">))</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span><span class="o">+</span><span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="p">((</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span>
+                                   <span class="o">*</span><span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+                                   <span class="o">+</span><span class="p">(</span><span class="n">eta</span>
+                                   <span class="o">*</span><span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">bias_gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                                   <span class="p">))</span>
+
+            <span class="n">weight_col</span> <span class="o">-=</span> <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">bias</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
+
+        <span class="k">elif</span> <span class="n">c</span><span class="p">.</span><span class="n">OPTIMIZATION</span> <span class="o">==</span> <span class="sh">'</span><span class="s">NAG</span><span class="sh">'</span><span class="p">:</span>
+            <span class="n">v_prev</span> <span class="o">=</span> <span class="p">{</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">):</span> <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)],</span>
+                      <span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">):</span> <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]}</span>
+
+            <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span>
+                        <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">NAG_COEFF</span> <span class="o">*</span> <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
+                       <span class="o">-</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">gradients</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span>
+                        <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">NAG_COEFF</span> <span class="o">*</span> <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
+                       <span class="o">-</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">bias_gradients</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+            <span class="n">weight_col</span> <span class="o">+=</span> <span class="p">((</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">c</span><span class="p">.</span><span class="n">BETA1</span> <span class="o">*</span> <span class="n">v_prev</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+                           <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">c</span><span class="p">.</span><span class="n">BETA1</span><span class="p">)</span> <span class="o">*</span> <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">bias</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="p">((</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">c</span><span class="p">.</span><span class="n">BETA1</span> <span class="o">*</span> <span class="n">v_prev</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+                           <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">c</span><span class="p">.</span><span class="n">BETA1</span><span class="p">)</span> <span class="o">*</span> <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+
+        <span class="k">elif</span> <span class="n">c</span><span class="p">.</span><span class="n">OPTIMIZATION</span> <span class="o">==</span> <span class="sh">'</span><span class="s">RMSProp</span><span class="sh">'</span><span class="p">:</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span>
+                            <span class="p">((</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span>
+                            <span class="o">*</span><span class="n">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+                            <span class="o">+</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span><span class="p">)</span>
+                            <span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">square</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])))</span>
+                            <span class="p">))</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span>
+                            <span class="p">((</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span>
+                            <span class="o">*</span><span class="n">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+                            <span class="o">+</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span><span class="p">)</span>
+                            <span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">square</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">bias_gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])))</span>
+                            <span class="p">))</span>
+
+            <span class="n">weight_col</span> <span class="o">-=</span> <span class="p">(</span><span class="n">eta</span>
+                          <span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                          <span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span><span class="o">+</span><span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span><span class="o">+</span><span class="n">c</span><span class="p">.</span><span class="n">EPSILON</span><span class="p">)))</span>
+                          <span class="p">)</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">bias</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="p">(</span><span class="n">eta</span>
+                          <span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">bias_gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                          <span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span><span class="o">+</span><span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span><span class="o">+</span><span class="n">c</span><span class="p">.</span><span class="n">EPSILON</span><span class="p">)))</span>
+                            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">c</span><span class="p">.</span><span class="n">OPTIMIZATION</span> <span class="o">==</span> <span class="sh">"</span><span class="s">ADAM</span><span class="sh">"</span><span class="p">:</span>
+            <span class="c1"># decaying averages of past gradients
+</span>            <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="p">((</span>
+                                <span class="n">c</span><span class="p">.</span><span class="n">BETA1</span>
+                              <span class="o">*</span> <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+                              <span class="o">+</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">c</span><span class="p">.</span><span class="n">BETA1</span><span class="p">)</span>
+                              <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                                    <span class="p">))</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="p">((</span>
+                                <span class="n">c</span><span class="p">.</span><span class="n">BETA1</span>
+                              <span class="o">*</span> <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+                              <span class="o">+</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">c</span><span class="p">.</span><span class="n">BETA1</span><span class="p">)</span>
+                              <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">bias_gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                                    <span class="p">))</span>
+
+            <span class="c1"># decaying averages of past squared gradients
+</span>            <span class="n">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="p">((</span><span class="n">c</span><span class="p">.</span><span class="n">BETA2</span>
+                                    <span class="o">*</span> <span class="n">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span><span class="o">+</span><span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+                                    <span class="o">+</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">c</span><span class="p">.</span><span class="n">BETA2</span><span class="p">)</span>
+                                    <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">square</span><span class="p">(</span>
+                                            <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span>
+                                                <span class="n">self</span><span class="p">.</span><span class="n">gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])))</span>
+                                     <span class="p">))</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span> <span class="p">((</span><span class="n">c</span><span class="p">.</span><span class="n">BETA2</span>
+                                    <span class="o">*</span> <span class="n">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+                                    <span class="o">+</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">c</span><span class="p">.</span><span class="n">BETA2</span><span class="p">)</span>
+                                    <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">square</span><span class="p">(</span>
+                                            <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span>
+                                                <span class="n">self</span><span class="p">.</span><span class="n">bias_gradients</span><span class="p">[</span><span class="n">i</span><span class="p">])))</span>
+                                     <span class="p">))</span>
+
+            <span class="k">if</span> <span class="n">c</span><span class="p">.</span><span class="n">ADAM_BIAS_Correction</span><span class="p">:</span>
+                <span class="c1"># bias-corrected first and second moment estimates
+</span>                <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span>
+                                <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
+                              <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span> <span class="o">**</span> <span class="n">true_epoch</span><span class="p">))</span>
+                <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span>
+                                <span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
+                              <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">BETA1</span> <span class="o">**</span> <span class="n">true_epoch</span><span class="p">))</span>
+                <span class="n">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span>
+                                <span class="n">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
+                              <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">BETA2</span> <span class="o">**</span> <span class="n">true_epoch</span><span class="p">))</span>
+                <span class="n">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="o">=</span>
+                                <span class="n">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
+                              <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">BETA2</span> <span class="o">**</span> <span class="n">true_epoch</span><span class="p">))</span>
+
+            <span class="c1"># apply to weights and biases
+</span>            <span class="n">weight_col</span> <span class="o">-=</span> <span class="p">((</span><span class="n">eta</span>
+                            <span class="o">*</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
+                            <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="sh">"</span><span class="s">dW</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+                            <span class="o">+</span> <span class="n">c</span><span class="p">.</span><span class="n">EPSILON</span><span class="p">))))</span>
+            <span class="n">self</span><span class="p">.</span><span class="n">bias</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="p">((</span><span class="n">eta</span>
+                            <span class="o">*</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
+                            <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">s</span><span class="p">[</span><span class="sh">"</span><span class="s">db</span><span class="sh">"</span> <span class="o">+</span> <span class="nf">str</span><span class="p">(</span><span class="n">i</span><span class="p">)])</span>
+                            <span class="o">+</span> <span class="n">c</span><span class="p">.</span><span class="n">EPSILON</span><span class="p">))))</span>
+
+    <span class="n">self</span><span class="p">.</span><span class="nf">gradient_zeros</span><span class="p">()</span>
+</code></pre></div></div>
+
+
+        <aside class="sidebar inline" id="post-end">
+    
+
+
+
+<div class="tag-cloud">
+    
+        <ul class="tags inline">
+            
+                <li><a href="./tag.html?tag=coding" class="tag inline">coding</a></li>
+            
+                <li><a href="./tag.html?tag=machine+learning" class="tag inline">machine learning</a></li>
+            
+                <li><a href="./tag.html?tag=optimization" class="tag inline">optimization</a></li>
+            
+                <li><a href="./tag.html?tag=deep+Neural+networks" class="tag inline">deep Neural networks</a></li>
+            
+    
+        </ul>
+</div>
+    <div class="share-options inline">
+    <div class="share-hover inline">
+        <span class="share-button inline"><svg fill="currentColor" width="25" height="25" class="inline"><g fill-rule="evenodd"><path d="M15.6 5a.42.42 0 0 0 .17-.3.42.42 0 0 0-.12-.33l-2.8-2.79a.5.5 0 0 0-.7 0l-2.8 2.8a.4.4 0 0 0-.1.32c0 .12.07.23.16.3h.02a.45.45 0 0 0 .57-.04l2-2V10c0 .28.23.5.5.5s.5-.22.5-.5V2.93l2.02 2.02c.08.07.18.12.3.13.11.01.21-.02.3-.08v.01"></path><path d="M18 7h-1.5a.5.5 0 0 0 0 1h1.6c.5 0 .9.4.9.9v10.2c0 .5-.4.9-.9.9H6.9a.9.9 0 0 1-.9-.9V8.9c0-.5.4-.9.9-.9h1.6a.5.5 0 0 0 .35-.15A.5.5 0 0 0 9 7.5a.5.5 0 0 0-.15-.35A.5.5 0 0 0 8.5 7H7a2 2 0 0 0-2 2v10c0 1.1.9 2 2 2h11a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2"></path></g></svg></span>
+        <div class="share-icons inline" id="post-end-icons">
+            <a class="twitter" href="https://twitter.com/intent/tweet?text=Neural Network Optimization Methods and Algorithms&url=http://localhost:4000/neural-network-optimization-methods.html" title="Share on Twitter" rel="nofollow" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a class="facebook" href="https://facebook.com/sharer.php?u=http://localhost:4000/neural-network-optimization-methods.html" title="Share on Facebook" rel="nofollow" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a class="reddit" href="http://www.reddit.com/submit?url=http://localhost:4000/neural-network-optimization-methods.html&title=Neural Network Optimization Methods and Algorithms" title="Submit to Reddit" rel="nofollow" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a>
+            <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/neural-network-optimization-methods.html&title=Neural Network Optimization Methods and Algorithms&summary=Some neural network optimization algorithms mostly to implement momentum when doing back propagation.&source=http://localhost:4000/neural-network-optimization-methods.html" title="Share on LinkedIn" rel="nofollow" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+            <a class="email" href="mailto:?subject=Neural Network Optimization Methods and Algorithms&body=Some neural network optimization algorithms mostly to implement momentum when doing back propagation.%0A%0ARead more here: http://localhost:4000/neural-network-optimization-methods.html" title="Share via e-mail" rel="nofollow" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+            <a class="copy-link" onclick="copyToClipboard()" title="Copy to clipboard" rel="nofollow" target="_blank"><svg width="20px" fill="currentColor" class="inline" viewBox="0 0 18 18"><path d="M16.94 1.1A3.7 3.7 0 0 0 14.3 0c-1 0-1.94.39-2.64 1.1L7.43 5.3c-.91.92-2.09 3.2 0 5.27a.75.75 0 0 0 .82.16c.09-.03.17-.09.24-.15a.74.74 0 0 0 0-1.06c-1.16-1.15-.77-2.39-.02-3.16l4.24-4.22a2.2 2.2 0 0 1 1.58-.65c.6 0 1.16.23 1.58.65.86.87.86 2.29 0 3.16L12.7 8.47a.74.74 0 0 0 1.04 1.05l3.17-3.16a3.73 3.73 0 0 0 0-5.27h.03zM9.54 7.4a.74.74 0 0 0 0 1.06c1.16 1.15.76 2.39 0 3.16l-4.22 4.22c-.42.42-.99.65-1.59.65a2.23 2.23 0 0 1-1.58-3.82l3.17-3.16A.73.73 0 0 0 5.54 9a.78.78 0 0 0-.22-.52.77.77 0 0 0-1.05 0L1.1 11.64A3.72 3.72 0 0 0 3.74 18c1 0 1.94-.39 2.65-1.1l4.23-4.2c.21-.22.94-1.02 1.13-2.2.18-1.12-.2-2.15-1.12-3.07-.27-.27-.78-.27-1.06 0l-.02-.02z" clip-rule="evenodd" fill-rule="evenodd"></path></svg></a>
+        </div>
+    </div>
+    <div class='alert' style='font-size:.6em;color:var(--accent);text-align:center;'></div>
+</div>
+</aside>
+
+        <div class="separator"></div>
+        
+
+
+
+<section class="author-box">
+  <div class="narrow-column">
+    <a href=''><img src="./assets/img/Myself-Neon.png" alt="Vera Breen" class="author-img"></a>
+    <ul class="contact-icons">
+      
+      
+      
+      
+      <li class="email"><a class="email" href="mailto:verabreen@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
+      
+      
+    </ul>
+  </div>
+  <div class="author-desc">
+    <h3>Vera Breen</h3>
+    <p>Fantasy Romance and Erotica Author</p>
+  </div>
+</section>
+
+        
+
+
+
+<div class="recent-box">
+  <h2 class="page-subtitle">Recent posts</h2>
+  <div class="recent-list">
+    
+      
+        <div class="recent-item">
+          
+          
+
+          <a href="./AI-and-intellectual-property.html" class="recent-item-img" style="background: url('./assets/img/posts/20210420/post8-rembrandt.jpg') center no-repeat; background-size: cover;">
+            <div class="recent-item-title">
+              <span>Who owns the copyright for an AI generated creative work?</span>
+              
+
+  <span class = "recent-item-meta">
+  
+  
+  
+  
+    
+    
+    <p class="page_meta-readtime">
+      
+        4 minute read
+      
+    </p>
+  
+  
+  </span>
+
+            </div>
+          </a>
+        </div>
+      
+    
+      
+        <div class="recent-item">
+          
+          
+
+          <a href="./back-to-basics.html" class="recent-item-img" style="background: url('./assets/img/posts/20210402/post7-header.webp') center no-repeat; background-size: cover;">
+            <div class="recent-item-title">
+              <span>So, what is a neural network?</span>
+              
+
+  <span class = "recent-item-meta">
+  
+  
+  
+  
+    
+    
+    <p class="page_meta-readtime">
+      
+        9 minute read
+      
+    </p>
+  
+  
+  </span>
+
+            </div>
+          </a>
+        </div>
+      
+    
+      
+        <div class="recent-item">
+          
+          
+
+          <a href="./starting-the-adventure.html" class="recent-item-img" style="background: url('./assets/img/posts/20210324/starting_adventure.jpg') center no-repeat; background-size: cover;">
+            <div class="recent-item-title">
+              <span>Starting the adventure</span>
+              
+
+  <span class = "recent-item-meta">
+  
+  
+  
+  
+    
+    
+    <p class="page_meta-readtime">
+      
+        11 minute read
+      
+    </p>
+  
+  
+  </span>
+
+            </div>
+          </a>
+        </div>
+      
+    
+      
+        <div class="recent-item">
+          
+          
+
+          <a href="./deep-q-learning-tic-tac-toe.html" class="recent-item-img" style="background: url('./assets/img/posts/20210318/TicTacToeSml.jpg') center no-repeat; background-size: cover;">
+            <div class="recent-item-title">
+              <span>Deep Q Learning for Tic Tac Toe</span>
+              
+
+  <span class = "recent-item-meta">
+  
+  
+  
+  
+    
+    
+    <p class="page_meta-readtime">
+      
+        13 minute read
+      
+    </p>
+  
+  
+  </span>
+
+            </div>
+          </a>
+        </div>
+      
+    
+  </div>
+</div> <!-- End Recent-Box -->
+
+        <div class="newsletter" id="mc_embed_signup">
+  <h2 class="page-subtitle">Newsletter</h2>
+  <div class="form-container">
+    <p>Subscribe here to get our latest updates</p>
+    <form action="" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+      <label class="screen-reader-text" for="mce-EMAIL">Email Address</label>
+      <div class="newsletter-box" id="mc_embed_signup_scroll">
+        <input type="email" name="EMAIL" placeholder="Email address" class="email-input" id="mce-EMAIL" required>
+        <input type="submit" value="Subscribe" name="subscribe" class="subscribe-btn" id="mc-embedded-subscribe">
+      </div>
+    </form>
+  </div>
+</div> <!-- End Newsletter -->
+
+      </div>
+    </div> <!-- End Wrapper -->
+  </article>
+  <div class="search-box">
+  <div class="wrapper">
+    <div class="search-grid">
+      <form class="search-form">
+        <div id="search-container">
+          <input type="text" id="search-input" class="search" placeholder="Search">
+        </div>
+      </form>
+      <ul id="results-container" class="results-search"></ul>
+      <div class="icon-close-container">
+        <span class="search-icon-close"><i class="fa fa-times" aria-hidden="true"></i></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+    <div class="top" title="Top">
+      <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="angle-up" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" class="svg-inline--fa fa-angle-up fa-w-8 fa-2x"><path fill="currentColor" d="M136.5 185.1l116 117.8c4.7 4.7 4.7 12.3 0 17l-7.1 7.1c-4.7 4.7-12.3 4.7-17 0L128 224.7 27.6 326.9c-4.7 4.7-12.3 4.7-17 0l-7.1-7.1c-4.7-4.7-4.7-12.3 0-17l116-117.8c4.7-4.6 12.3-4.6 17 .1z" class=""></path></svg>
+    </div>
+    
+
+
+
+
+<!-- JS -->
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var logo = document.getElementById('logo');
+    var nightModeOption = ('manual' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+    storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+    var data = storage.getItem('theme');
+    try {
+        data = JSON.parse(data ? data : '');
+    } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+    }
+    return data;
+    }
+
+    /*
+    function handleThemeToggle(nightShift) {
+    themeData.nightShift = nightShift;
+    saveThemeData(themeData);
+    html.dataset.theme = nightShift ? 'dark' : 'light';
+    if (nightShift) {
+        logo.setAttribute("src", "./assets/img/branding/MVM-logo-full-dark.svg");
+    } else {
+        logo.setAttribute("src", "./assets/img/branding/MVM-logo-full.svg");
+    }
+    setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+    }, 50);
+    }
+    */
+
+    function handleThemeToggle(nightShift) {
+    themeData.nightShift = nightShift;
+        saveThemeData(themeData);
+        html.dataset.theme = 'dark';
+        logo.setAttribute("src", "./assets/img/branding/MVM-logo-full-dark.svg");
+    }
+
+    function autoThemeToggle() {
+    // Next time point of theme toggle
+    var now = new Date();
+    var toggleAt = new Date();
+    var hours = now.getHours();
+    var nightShift = hours >= 19 || hours <=7;
+
+    if (nightShift) {
+        if (hours > 7) {
+        toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+    } else {
+        toggleAt.setHours(19);
+    }
+
+    toggleAt.setMinutes(0);
+    toggleAt.setSeconds(0);
+    toggleAt.setMilliseconds(0)
+
+    var delay = toggleAt.getTime() - now.getTime();
+
+    // auto toggle theme mode
+    setTimeout(function() {
+        handleThemeToggle(!nightShift);
+    }, delay);
+
+    return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+    };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+    handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+    var data = autoThemeToggle();
+
+    // Toggle theme by local setting
+    if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+    } else {
+        handleThemeToggle(themeData.nightShift);
+    }
+    } else if (nightModeOption == 'manual') {
+    handleThemeToggle(themeData.nightShift);
+    } else {
+    var nightShift = themeData.nightShift;
+    if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+    }
+    handleThemeToggle(nightShift);
+    }
+})();
+</script>
+
+<script src="./assets/js/jekyll-search.js"></script>
+<script src="./assets/js/jquery-3.6.0.min.js"></script>
+
+
+  <script>
+    function toggle_comments(){
+      var commentCurtain = document.getElementById('comment-curtain')
+      if (commentCurtain) {
+        commentCurtain.classList.toggle('hide')
+      }
+      var disqusThread = document.getElementById('comment-layout')
+      if (disqusThread) {
+        disqusThread.classList.toggle('show')
+      }
+    }
+
+    function copyToClipboard() {
+      navigator.clipboard.writeText('http://localhost:4000/neural-network-optimization-methods.html').then(function() {
+      alerts = document.getElementsByClassName('alert')
+      for (i=0; i < alerts.length; i++){
+        alerts[i].innerHTML='\u00ABlink copied\u00BB';
+        setTimeout((function(i){ return function(){alerts[i].innerHTML='';}})(i), 1600 );
+      };
+      }, function() {
+        prompt("Unable to copy, please use this link:", "http://localhost:4000/neural-network-optimization-methods.html");
+      });
+    }
+
+    $(function () {
+      if (document.getElementById('comment-curtain') == null){
+        var disqusThread = document.getElementById('comment-layout')
+        if (disqusThread) {
+          disqusThread.classList.toggle('show')
+        }
+      }
+
+      var tweetTags = document.getElementsByTagName("tweet");
+
+      if (tweetTags != null){
+        for (i=0; i<tweetTags.length; i++){
+          tweetA = document.createElement("a")
+          tweetA.href = 'https://twitter.com/share?text='
+                       + encodeURIComponent(tweetTags[i].textContent)
+                       + '&via=&url='
+                       + window.location.href;
+          tweetA.target = "_blank";
+          tweetA.className = 'twitter';
+          tweetSpanText = document.createElement('span');
+          tweetSpanText.className = 'tweetText';
+          tweetSpanText.appendChild(document.createTextNode(tweetTags[i].textContent));
+          tweetSpanIcon = document.createElement('span');
+          tweetSpanIcon.className = 'tweetIcon';
+          tweetSpanIcon.appendChild(document.createTextNode("click to tweet"));
+          tweetI = document.createElement("i");
+          tweetI.className = 'fa fa-twitter';
+          tweetSpanIcon.appendChild(tweetI);
+          tweetA.appendChild(tweetSpanText);
+          tweetA.appendChild(tweetSpanIcon);
+          tweetTags[i].textContent = "";
+          tweetTags[i].appendChild(tweetA);
+        }
+      }
+
+    });
+
+  </script>
+  <!-- Mailchimp linking -->
+  <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/8ece198b3eb260e6838461a60/d20d9fb9aad962399025da52e.js");</script>
+
+
+
+  <script src="https://cdn.jsdelivr.net/gh/cferdinandi/gumshoe@5.1.1/dist/gumshoe.polyfills.min.js"></script>
+  <script>
+    var spy = new Gumshoe("#toc-content a", {
+      navClass:"active",
+      contentClass:"underline",
+      nested:0,
+      nestedClass:"active",
+      offset:20,
+      reflow:1,
+      events:1
+    });
+
+    var coll = document.getElementsByClassName("toc-item-1");
+    var i;
+    var chevron_up = "<svg aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 256 512\"><path fill=\"currentColor\" d=\"M136.5 185.1l116 117.8c4.7 4.7 4.7 12.3 0 17l-7.1 7.1c-4.7 4.7-12.3 4.7-17 0L128 224.7 27.6 326.9c-4.7 4.7-12.3 4.7-17 0l-7.1-7.1c-4.7-4.7-4.7-12.3 0-17l116-117.8c4.7-4.6 12.3-4.6 17 .1z\"></path></svg>"
+    var chevron_down = "<svg aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 256 512\"><path fill=\"currentColor\" d=\"M119.5 326.9L3.5 209.1c-4.7-4.7-4.7-12.3 0-17l7.1-7.1c4.7-4.7 12.3-4.7 17 0L128 287.3l100.4-102.2c4.7-4.7 12.3-4.7 17 0l7.1 7.1c4.7 4.7 4.7 12.3 0 17L136.5 327c-4.7 4.6-12.3 4.6-17-.1z\"></path></svg>"
+    for (i = 0; i < coll.length; i++) {
+      if (coll[i].childElementCount > 1) {
+        sign = document.createElement('div');
+        sign.className = "toc-sign";
+        sign.innerHTML = chevron_down;
+        coll[i].insertBefore(sign, coll[i].childNodes[0].nextSibling);
+        coll[i].addEventListener("click", function() {
+          var content = this.lastElementChild;
+          if (content.style.maxHeight){
+            content.style.maxHeight = null;
+            this.firstElementChild.nextSibling.innerHTML = chevron_down;
+          } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+            this.firstElementChild.nextSibling.innerHTML = chevron_up;
+          }
+        });
+      }
+    }
+  </script>
+
+
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true
+    },
+    "CommonHTML": { linebreaks: { automatic: true } }
+    });
+  </script>
+  <script src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+<script src="./assets/js/main.js"></script>
+<script>
+  SimpleJekyllSearch({
+      searchInput: document.getElementById('search-input'),
+      resultsContainer: document.getElementById('results-container'),
+      json: './search.json',
+      searchResultTemplate: '<li><a href="{url}" title="{description}">{title}</a><p>{description}</p></li>',
+      noResultsText: 'No results found',
+      fuzzy: false,
+      exclude: ['Welcome']
+    });
+</script>
+
+
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R8SZS2YBZK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-R8SZS2YBZK');
+</script>
+  </body>
+</html>

@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+
+
+
+
+<head>
+	<meta charset="utf-8">
+	<title>Deep Q Learning for Tic Tac Toe - The Vera Breen - Author</title>
+	<link rel="canonical" href="http://localhost:4000/deep-q-learning-tic-tac-toe.html">
+	<meta name="description" content="Inspired by Deep Mind's astonishing feats of having their Alpha Go, Alpha Zero and Alpha Star programs learn (and be amazing at it) Go, Chess, Atari games and lately Starcraft; I set myself to the task of programming a neural network that will learn by itself how to play the ancient game of tic tac toe. How hard could it be?">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:4000"},
+  "headline": "Deep Q Learning for Tic Tac Toe",
+  "abstract": "Inspired by Deep Mind's astonishing feats of having their Alpha Go, Alpha Zero and Alpha Star programs learn (and be amazing at it) Go, Chess, Atari games and lately Starcraft; I set myself to the task of programming a neural network that will learn by itself how to play the ancient game of tic tac toe. How hard could it be?",
+    "keywords": "machine learning, artificial intelligence, reinforcement learning, coding, python",
+    "wordcount": "2572",
+    "image": ["http://localhost:4000/assets/imgposts/20210318/TicTacToeSml.jpg"],
+  "datePublished": "2021-03-18 15:14:20 -0600",
+  "dateModified": "2021-03-18 15:14:20 -0600",
+  "author": {
+    "@type": "Person",
+    "name": "Armando Maynez"},
+  "publisher": {
+    "@type":  "Organization",
+    "logo": {
+        "@type": "ImageObject",
+        "encodingFormat": "image/png",
+        "contentUrl": "http://localhost:4000/assets/img/branding/MVM-symbol-black.png",
+        "url": "http://localhost:4000/assets/img/branding/MVM-symbol-black.png"},
+    "name" : "The Vera Breen - Author"}
+}
+</script>
+<!-- Open Graph data -->
+<meta property="og:url" content="http://localhost:4000/deep-q-learning-tic-tac-toe.html"/>
+<meta property="og:type" content="article"/>
+<meta property="og:title" content="Deep Q Learning for Tic Tac Toe"/>
+<meta property="og:description" content="Inspired by Deep Mind's astonishing feats of having their Alpha Go, Alpha Zero and Alpha Star programs learn (and be amazing at it) Go, Chess, Atari games and lately Starcraft; I set myself to the task of programming a neural network that will learn by itself how to play the ancient game of tic tac toe. How hard could it be?"/>
+<meta property="og:image" content="http://localhost:4000/assets/imgposts/20210318/TicTacToeSml.jpg"/>
+<meta property="og:image:alt" content="Deep Q Learning for Tic Tac Toe"/>
+<meta property="og:site_name" content="The Vera Breen - Author" />
+<meta property="article:published_time" content="2021-03-18 15:14:20 -0600" />
+<meta property="article:modified_time" content="2021-03-18 15:14:20 -0600" />
+<meta property="article:tag" content="machine learning, artificial intelligence, reinforcement learning, coding, python" />
+<meta property="fb:admins" content="ar.maybach" />
+<!-- Schema.org markup for Google -->
+<meta itemprop="name" content="Deep Q Learning for Tic Tac Toe">
+<meta itemprop="description" content="Inspired by Deep Mind's astonishing feats of having their Alpha Go, Alpha Zero and Alpha Star programs learn (and be amazing at it) Go, Chess, Atari games and lately Starcraft; I set myself to the task of programming a neural network that will learn by itself how to play the ancient game of tic tac toe. How hard could it be?">
+<meta itemprop="image" content="http://localhost:4000/assets/imgposts/20210318/TicTacToeSml.jpg">
+<!-- Twitter Card data -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+<meta name="twitter:title" content="Deep Q Learning for Tic Tac Toe">
+<meta name="twitter:description" content="Inspired by Deep Mind's astonishing feats of having their Alpha Go, Alpha Zero and Alpha Star programs learn (and be amazing at it) Go, Chess, Atari games and lately Starcraft; I set myself to the ...">
+<meta name="twitter:creator" content="">
+<meta data-rh="true" name="twitter:label1" content="Word count"/>
+<meta data-rh="true" name="twitter:data1" content="2572"/>
+<meta name="twitter:image:src" content="http://localhost:4000/assets/img/posts/20210318/TicTacToeSml.jpg">
+	<!-- Windows Phone -->
+	<meta name="msapplication-navbutton-color" content="#311e3e">
+	<!-- iOS Safari -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="#311e3e">
+	<!-- Google Fonts -->
+	<link rel="preconnect" href="https://fonts.gstatic.com" />
+	<style>
+/* latin */
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/lora/v17/0QIvMX1D_JOuMwr7I_FMl_E.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 600;
+  src: url(https://fonts.gstatic.com/s/lora/v17/0QIvMX1D_JOuMwr7I_FMl_E.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 200;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3i94_wlxdu3cOWxw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7lujVj9w.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwlxdu3cOWxw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+	</style>
+	<!-- <link href="https://fonts.googleapis.com/css?family=Lora:400,600|Source+Sans+Pro:200,400,700" rel="stylesheet"> -->
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="./assets/fonts/font-awesome/css/font-awesome.min.css">
+	<!-- Styles -->
+	<link rel="stylesheet" href="./assets/css/main.css">
+	
+
+
+
+
+<link rel="icon" href="./assets/img/favicon/favicon.ico" type="image/x-icon">
+<link rel="apple-touch-icon" href="./assets/img/favicon/favicon.ico">
+<link rel="apple-touch-icon" sizes="72x72" href="./assets/img/favicon/favicon.ico">
+<link rel="apple-touch-icon" sizes="114x114" href="./assets/img/favicon/favicon.ico">
+	
+	<link rel="stylesheet" href="./assets/css/highlighter/syntax-base16.monokai.dark.css">
+	
+</head>
+
+  <body>
+    
+
+
+
+
+<section class="hidden">
+  <div class="post">
+      <a  class="post-list-title" href="./deep-q-learning-tic-tac-toe.html">Deep Q Learning for Tic Tac Toe</a>
+      
+
+  <span class = "post-card-meta">
+  
+  
+    <span class="meta-pre"></span>
+  
+  
+    
+      
+      <span class="page_meta-date">
+        <time datetime="2021-03-18T15:14:20-06:00">March 18, 2021</time>
+      </span>
+    
+    
+      <span class="meta-sep"></span>
+    
+  
+  
+    
+    
+    <span class="page_meta-readtime">
+      
+        12 minute read
+      
+    </span>
+  
+  
+  </span>
+
+        <div class="post-excerpt">
+            <center><img style="float: left;margin-right: 1em;" src="./assets/img/posts/20210318/Game_Screen.png" width="310" height="300" /></center><h2 id="background">Background</h2><p>After many years of a corporate career (17) diverging from computer science, I have now decided to learn Machine Learning and in the process return to coding (something I have always loved!).</p><p>To fully grasp the essence of ML I decided to start by <a href="./ML-Library-from-scratch.html">coding a ML library myself</a>, so I can fully understand the inner workings, linear algebra and calculus involved in Stochastic Gradient Descent. And on top learn Python (I used to code in C++ 20 years ago).</p><p>I built a general purpose basic ML library that creates a Neural Network...<a class="read-more" href="./deep-q-learning-tic-tac-toe.html"> read more</a>
+        </div>
+  </div>
+</section>
+<div class="flex-container transparent">
+  
+
+
+
+
+<header class="main-header">
+  <div class="wrapper">
+    <div class="header-flex">
+      <div class="menu-icon-container">
+        <span class="menu-icon"><i class="fa fa-bars" aria-hidden="true"></i></span>
+      </div>
+      <nav class="main-nav">
+        <span class="menu-icon-close"><i class="fa fa-times" aria-hidden="true"></i></span>
+        <ul>
+          <li>
+            <div class="theme-toggle night">
+    <input class="night" type="checkbox" id="theme-switch">
+</div>
+          </li>
+          <li>
+            <a href="./">
+              <div class="left">
+                Home
+              </div>  
+              <div class="right">
+                <svg width="24px" aria-hidden="true" focusable="false" role="img" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g><rect x="83.534" y="40.929" width="3.997" height="20.071"/></g><path d="M16.466,41.931l33.548-25.123L92.81,48.877l2.396-3.198L50.015,11.814L4.794,45.679l2.396,3.199l5.279-3.954v42.763h75.062  V61h-3.997v22.69H64.598V54.068H35.402V83.69H16.466V41.931z M39.399,58.065h21.202V83.69H39.399V58.065z"/></svg>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="./books.html">
+              <div class="left">
+              Books
+              </div>
+              <div class="right">
+                <svg width="24px" aria-hidden="true" focusable="false" role="img" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><g><path d="M75.244,15.066c-2.59,0-5.027,1.012-6.857,2.843c-3.781,3.785-3.778,9.94,0.002,13.724    c1.831,1.833,4.266,2.843,6.857,2.843s5.026-1.01,6.861-2.843c3.781-3.785,3.781-9.943-0.002-13.724    C80.275,16.076,77.838,15.066,75.244,15.066z M78.766,28.252c-1.871,1.869-5.129,1.869-6.996,0c-1.929-1.931-1.931-5.069-0.002-7    c0.934-0.934,2.175-1.448,3.498-1.448c1.322,0,2.564,0.515,3.5,1.448C80.691,23.183,80.691,26.321,78.766,28.252z M94.632,41.027    l0.005-28.872c0-3.745-3.05-6.792-6.792-6.792L58.973,5.368l-1.237-0.004c-1.893,0-4.75,0-6.617,1.869L7.008,51.342    c-1.06,1.059-1.645,2.467-1.645,3.966s0.583,2.908,1.644,3.968l33.717,33.717c1.058,1.06,2.467,1.645,3.966,1.645    s2.908-0.585,3.968-1.645l44.106-44.111c1.893-1.886,1.88-4.604,1.869-7.227L94.632,41.027z M90.022,46.139L45.913,90.25    c-0.654,0.65-1.792,0.652-2.443,0L9.752,56.532c-0.328-0.327-0.507-0.762-0.507-1.225c0-0.462,0.18-0.894,0.507-1.221    L53.861,9.976c0.676-0.674,2.284-0.731,3.874-0.731l1.237,0.004l28.872-0.004c1.604,0,2.909,1.306,2.909,2.911l-0.005,28.872    l0.005,0.642C90.76,43.585,90.769,45.392,90.022,46.139z"/></g></svg>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="./archive.html">
+              <div class="left">
+                Blog
+              </div>
+              <div class="right">
+                <svg width="24px" aria-hidden="true" focusable="false" role="img" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="-3 3 64 64"><g><path d="M60.992,31.985c0-15.979-13-28.978-28.979-28.978c-15.994,0-29.006,12.999-29.006,28.978   c0,15.994,13.012,29.007,29.006,29.007v-2c-14.891,0-27.006-12.115-27.006-27.007c0-14.875,12.115-26.978,27.006-26.978   c14.876,0,26.979,12.103,26.979,26.978c0,8.945-4.479,17.329-11.804,22.338l0.874-10.062l-1.992-0.174l-1.135,13.071l13.042,1.136   l0.174-1.992l-9.183-0.799C56.443,50.079,60.992,41.321,60.992,31.985z"/><polygon points="33.014,12.682 31.014,12.682 31.014,32.398 39.811,41.224 41.227,39.812 33.014,31.572  "/></g></svg>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="./about.html">
+              <div class="left">
+                About
+              </div>
+              <div class="right">
+                <svg width='24px' aria-hidden="true" focusable="false" role="img" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 846.66 846.66"><g><path d="M351.26 453.22c-276.42,134.06 -224.86,336.22 -224.73,336.8 6.03,25.41 -32.58,34.56 -38.6,9.15 -0.15,-0.65 -55.78,-219.32 218.87,-367.66 -60.98,-39 -100.02,-106.82 -100.02,-182.56 0,-119.6 96.95,-216.55 216.55,-216.55 119.6,0 216.55,96.95 216.55,216.55 0,75.74 -39.04,143.56 -100.02,182.56 274.65,148.34 219.02,367.01 218.87,367.66 -6.02,25.41 -44.63,16.26 -38.6,-9.15 0.13,-0.58 51.69,-202.74 -224.73,-336.8 -22.55,7.96 -46.8,12.29 -72.07,12.29 -25.27,0 -49.52,-4.33 -72.07,-12.29zm72.07 -381.14c-97.68,0 -176.87,79.19 -176.87,176.87 0,97.69 79.19,176.87 176.87,176.87 97.68,0 176.87,-79.18 176.87,-176.87 0,-97.68 -79.19,-176.87 -176.87,-176.87z"/></g></svg>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      
+      
+      <div class="logo"><a href="./"><img class="logo" id="logo" src="./assets/img/branding/MVM-logo-full.svg" alt="The Vera Breen - Author"></a></div>
+      <div class="search-icon-container">
+        <span class="search-icon"><a><i class="fa fa-search" aria-hidden="true"></i></a></span>
+      </div>
+    </div>
+  </div>
+</header> <!-- End Header -->
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Deep Q Learning for Tic Tac Toe">
+<meta itemprop="description" content="Inspired by Deep Mind’s astonishing feats of having their Alpha Go, Alpha Zero and Alpha Star programs learn (and be amazing at it) Go, Chess, Atari games and lately Starcraft; I set myself to the task of programming a neural network that will learn by itself how to play the ancient game of tic tac toe. How hard could it be?">
+<meta itemprop="datePublished" content="2021-03-18T15:14:20-06:00">
+
+    <div class="page-image">
+      <div class="cover-image" style="background: url('./assets/img/posts/20210318/TicTacToeSml.jpg') center no-repeat; background-size: cover;"></div>
+    </div>
+    <div class="wrapper">
+      <div class="page-content">
+        <div class="header-page">
+          <h1 class="page-title">Deep Q Learning for Tic Tac Toe</h1>
+          
+
+  <span class = "post-page-meta">
+  
+    <p class="page_meta">
+  
+  
+  
+    
+      
+      <span class="page_meta-date">
+        <time datetime="2021-03-18T15:14:20-06:00">March 18, 2021</time>
+      </span>
+    
+    
+      <span class="meta-sep"></span>
+    
+  
+  
+    
+    
+    <span class="page_meta-readtime">
+      
+        12 minute read
+      
+    </span>
+  
+  
+    </p>
+  
+  </span>
+
+        </div>
+        <aside class="sidebar side" id="sidebar">
+    
+
+
+
+<div class="tag-cloud">
+    
+        <ul class="tags side">
+            
+                <li><a href="./tag.html?tag=machine+learning" class="tag side">machine learning</a></li>
+            
+                <li><a href="./tag.html?tag=artificial+intelligence" class="tag side">artificial intelligence</a></li>
+            
+                <li><a href="./tag.html?tag=reinforcement+learning" class="tag side">reinforcement learning</a></li>
+            
+                <li><a href="./tag.html?tag=coding" class="tag side">coding</a></li>
+            
+                <li><a href="./tag.html?tag=python" class="tag side">python</a></li>
+            
+    
+        </ul>
+</div>
+    <div class="share-options side">
+    <div class="share-hover side">
+        <span class="share-button side"><svg fill="currentColor" width="25" height="25" class="side"><g fill-rule="evenodd"><path d="M15.6 5a.42.42 0 0 0 .17-.3.42.42 0 0 0-.12-.33l-2.8-2.79a.5.5 0 0 0-.7 0l-2.8 2.8a.4.4 0 0 0-.1.32c0 .12.07.23.16.3h.02a.45.45 0 0 0 .57-.04l2-2V10c0 .28.23.5.5.5s.5-.22.5-.5V2.93l2.02 2.02c.08.07.18.12.3.13.11.01.21-.02.3-.08v.01"></path><path d="M18 7h-1.5a.5.5 0 0 0 0 1h1.6c.5 0 .9.4.9.9v10.2c0 .5-.4.9-.9.9H6.9a.9.9 0 0 1-.9-.9V8.9c0-.5.4-.9.9-.9h1.6a.5.5 0 0 0 .35-.15A.5.5 0 0 0 9 7.5a.5.5 0 0 0-.15-.35A.5.5 0 0 0 8.5 7H7a2 2 0 0 0-2 2v10c0 1.1.9 2 2 2h11a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2"></path></g></svg></span>
+        <div class="share-icons side" id="sidebar-icons">
+            <a class="twitter" href="https://twitter.com/intent/tweet?text=Deep Q Learning for Tic Tac Toe&url=http://localhost:4000/deep-q-learning-tic-tac-toe.html" title="Share on Twitter" rel="nofollow" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a class="facebook" href="https://facebook.com/sharer.php?u=http://localhost:4000/deep-q-learning-tic-tac-toe.html" title="Share on Facebook" rel="nofollow" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a class="reddit" href="http://www.reddit.com/submit?url=http://localhost:4000/deep-q-learning-tic-tac-toe.html&title=Deep Q Learning for Tic Tac Toe" title="Submit to Reddit" rel="nofollow" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a>
+            <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/deep-q-learning-tic-tac-toe.html&title=Deep Q Learning for Tic Tac Toe&summary=Inspired by Deep Mind's astonishing feats of having their Alpha Go, Alpha Zero and Alpha Star programs learn (and be amazing at it) Go, Chess, Atari games and lately Starcraft; I set myself to the task of programming a neural network that will learn by itself how to play the ancient game of tic tac toe. How hard could it be?&source=http://localhost:4000/deep-q-learning-tic-tac-toe.html" title="Share on LinkedIn" rel="nofollow" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+            <a class="email" href="mailto:?subject=Deep Q Learning for Tic Tac Toe&body=Inspired by Deep Mind's astonishing feats of having their Alpha Go, Alpha Zero and Alpha Star programs learn (and be amazing at it) Go, Chess, Atari games and lately Starcraft; I set myself to the task of programming a neural network that will learn by itself how to play the ancient game of tic tac toe. How hard could it be?%0A%0ARead more here: http://localhost:4000/deep-q-learning-tic-tac-toe.html" title="Share via e-mail" rel="nofollow" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+            <a class="copy-link" onclick="copyToClipboard()" title="Copy to clipboard" rel="nofollow" target="_blank"><svg width="20px" fill="currentColor" class="side" viewBox="0 0 18 18"><path d="M16.94 1.1A3.7 3.7 0 0 0 14.3 0c-1 0-1.94.39-2.64 1.1L7.43 5.3c-.91.92-2.09 3.2 0 5.27a.75.75 0 0 0 .82.16c.09-.03.17-.09.24-.15a.74.74 0 0 0 0-1.06c-1.16-1.15-.77-2.39-.02-3.16l4.24-4.22a2.2 2.2 0 0 1 1.58-.65c.6 0 1.16.23 1.58.65.86.87.86 2.29 0 3.16L12.7 8.47a.74.74 0 0 0 1.04 1.05l3.17-3.16a3.73 3.73 0 0 0 0-5.27h.03zM9.54 7.4a.74.74 0 0 0 0 1.06c1.16 1.15.76 2.39 0 3.16l-4.22 4.22c-.42.42-.99.65-1.59.65a2.23 2.23 0 0 1-1.58-3.82l3.17-3.16A.73.73 0 0 0 5.54 9a.78.78 0 0 0-.22-.52.77.77 0 0 0-1.05 0L1.1 11.64A3.72 3.72 0 0 0 3.74 18c1 0 1.94-.39 2.65-1.1l4.23-4.2c.21-.22.94-1.02 1.13-2.2.18-1.12-.2-2.15-1.12-3.07-.27-.27-.78-.27-1.06 0l-.02-.02z" clip-rule="evenodd" fill-rule="evenodd"></path></svg></a>
+        </div>
+    </div>
+    <div class='alert' style='font-size:.6em;color:var(--accent);text-align:center;'></div>
+</div>
+</aside>
+
+        <aside class="toc">
+  <nav class="toc-nav">
+    <li class="toc-title">
+      <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="align-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-align-left fa-w-14 fa-2x"><g class="fa-group"><path fill="currentColor" d="M12.83 352h262.34A12.82 12.82 0 0 0 288 339.17v-38.34A12.82 12.82 0 0 0 275.17 288H12.83A12.82 12.82 0 0 0 0 300.83v38.34A12.82 12.82 0 0 0 12.83 352zm0-256h262.34A12.82 12.82 0 0 0 288 83.17V44.83A12.82 12.82 0 0 0 275.17 32H12.83A12.82 12.82 0 0 0 0 44.83v38.34A12.82 12.82 0 0 0 12.83 96z" class="fa-secondary"></path><path fill="currentColor" d="M432 160H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0 256H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16z" class="fa-primary"></path></g></svg>
+    </li>
+    <ul class="toc-content" id="toc-content"><li class="toc-item-1"><a href="#background">Background</a></li><li class="toc-item-1"><a href="#designing-the-neural-network">Designing the neural network</a></li><li class="toc-item-1"><a href="#the-many-models">The many models…</a><ul class="toc-submenu-1"><li class="toc-item-2"><a href="#model-1---the-first-try">Model 1 - the first try</a></li><li class="toc-item-2"><a href="#model-2---linear-activation-for-the-output">Model 2 - Linear activation for the output</a></li><li class="toc-item-2"><a href="#model-3---new-network-topology">Model 3 - new network topology</a></li><li class="toc-item-2"><a href="#model-4---implementing-momentum">Model 4 - implementing momentum</a></li><li class="toc-item-2"><a href="#model-5---implementing-one-hot-encoding-and-changing-topology-again">Model 5 - implementing one-hot encoding and changing topology (again)</a></li><li class="toc-item-2"><a href="#model-6---tensorflow--keras">Model 6 - Tensorflow / Keras</a></li><li class="toc-item-2"><a href="#model-7---changing-the-training-schedule">Model 7 - changing the training schedule</a></li></ul></li></ul>
+  </nav>
+</aside>
+
+        
+<div class="center-container">
+  <div class="github-button">
+    <span class="button-icon" aria-hidden="true"><svg aria-hidden="true" focusable="false" role="img" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,2.2467A10.00042,10.00042,0,0,0,8.83752,21.73419c.5.08752.6875-.21247.6875-.475,0-.23749-.01251-1.025-.01251-1.86249C7,19.85919,6.35,18.78423,6.15,18.22173A3.636,3.636,0,0,0,5.125,16.8092c-.35-.1875-.85-.65-.01251-.66248A2.00117,2.00117,0,0,1,6.65,17.17169a2.13742,2.13742,0,0,0,2.91248.825A2.10376,2.10376,0,0,1,10.2,16.65923c-2.225-.25-4.55-1.11254-4.55-4.9375a3.89187,3.89187,0,0,1,1.025-2.6875,3.59373,3.59373,0,0,1,.1-2.65s.83747-.26251,2.75,1.025a9.42747,9.42747,0,0,1,5,0c1.91248-1.3,2.75-1.025,2.75-1.025a3.59323,3.59323,0,0,1,.1,2.65,3.869,3.869,0,0,1,1.025,2.6875c0,3.83747-2.33752,4.6875-4.5625,4.9375a2.36814,2.36814,0,0,1,.675,1.85c0,1.33752-.01251,2.41248-.01251,2.75,0,.26251.1875.575.6875.475A10.0053,10.0053,0,0,0,12,2.2467Z"/></svg></span>
+    <a class="button-text" href="https://github.com/amaynez/TicTacToe/" target="_blank" aria-label="Open on GitHub">view on <b>GitHub</b></a>
+  </div>
+</div>
+
+        <center><img style="float: left;margin-right: 1em;" src="./assets/img/posts/20210318/Game_Screen.png" width="310" height="300" /></center>
+
+<h2 id="background">Background</h2>
+<p>After many years of a corporate career (17) diverging from computer science, I have now decided to learn Machine Learning and in the process return to coding (something I have always loved!).</p>
+
+<p>To fully grasp the essence of ML I decided to start by <a href="./ML-Library-from-scratch.html">coding a ML library myself</a>, so I can fully understand the inner workings, linear algebra and calculus involved in Stochastic Gradient Descent. And on top learn Python (I used to code in C++ 20 years ago).</p>
+
+<p>I built a general purpose basic ML library that creates a Neural Network (only DENSE layers), saves and loads the weights into a file, does forward propagation and training (optimization of weights and biases) using SGD. I tested the ML library with the XOR problem to make sure it worked fine. You can read the blog post for it <a href="./ML-Library-from-scratch.html">here</a>.</p>
+
+<p>For the next challenge I am interested in reinforcement learning greatly inspired by Deep Mind’s astonishing feats of having their Alpha Go, Alpha Zero and Alpha Star programs learn (and be amazing at it) Go, Chess, Atari games and lately Starcraft; I set myself to the task of programming a neural network that will learn by itself how to play the ancient game of tic tac toe (or noughts and crosses).</p>
+
+<p>How hard could it be?</p>
+
+<p>Of course the first thing to do was to program the game itself, so I chose Python because I am learning it, so it gives me a good practice opportunity, and PyGame for the interface.
+Coding the game was quite straightforward, albeit for the hiccups of being my first PyGame and almost my first Python program ever.
+I created the game quite openly, in such a way that it can be played by two humans, by a human vs. an algorithmic AI, and a human vs. the neural network. And of course the neural network against a choice of 3 AI engines: random, <a href="https://en.wikipedia.org/wiki/Minimax">minimax</a> or hardcoded (an exercise I wanted to do since a long time).</p>
+
+<p>While training, the visuals of the game can be disabled to make training much faster.
+Now, for the fun part, training the network, I followed Deep Mind’s own DQN recommendations:</p>
+
+<ul><li>The network will be an approximation for the Q value function or Bellman equation, meaning that the network will be trained to predict the "value" of each move available in a given game state.</li><li>A replay experience memory was implemented. This meant that the neural network will not be trained after each move. Each move will be recorded in a special "memory" alongside with the state of the board and the reward it received for taking such an action (move).</li><li>After the memory is sizable enough, batches of random experiences sampled from the replay memory are used for every training round</li><li>A secondary neural network (identical to the main one) is used to calculate part of the Q value function (Bellman equation), in particular the future Q values. And then it is updated with the main network's weights every <em>n</em> games. This is done so that we are not chasing a moving target.</li></ul>
+
+<h2 id="designing-the-neural-network">Designing the neural network</h2>
+
+<center><img src="./assets/img/posts/20210318/Neural_Network_Topology.png" width="540" /></center>
+<p><br /></p>
+
+<p>The Neural Network chosen takes 9 inputs (the current state of the game) and outputs 9 Q values for each of the 9 squares in the board of the game (possible actions). Obviously some squares are illegal moves, hence while training there was a negative reward given to illegal moves hoping that the model would learn not to play illegal moves in a given position.</p>
+
+<p>I started out with two hidden layers of 36 neurons each, all fully connected and activated via ReLu. The output layer was initially activated using sigmoid to ensure that we get a nice value between 0 and 1 that represents the QValue of a given state action pair.</p>
+
+<h2 id="the-many-models">The many models…</h2>
+<h3 id="model-1---the-first-try">Model 1 - the first try</h3>
+
+<p>At first the model was trained by playing vs. a “perfect” AI, meaning a <a href="https://github.com/amaynez/TicTacToe/blob/b429e5637fe5f61e997f04c01422ad0342565640/entities/Game.py#L43">hard coded algorithm</a> that never looses and that will win if it is given the chance. After several thousand training rounds, I noticed that the Neural Network was not learning much; so I switched to training vs. a completely random player, so that it will also learn how to win. After training vs. the random player, the Neural Network seems to have made progress and is steadily diminishing the loss function over time.</p>
+
+<center><img src="./assets/img/posts/20210318/Loss_function_across_all_episodes.png" width="540" /></center>
+<p><br /></p>
+
+<p>However, the model was still generating many illegal moves, so I decided to modify the reinforcement learning algorithm to punish more the illegal moves. The change consisted in populating with zeros all the corresponding illegal moves for a given position at the target values to train the network. This seemed to work very well for diminishing the illegal moves:</p>
+
+<center><img src="./assets/img/posts/20210318/Loss_function_and_Illegal_moves.png" width="540" /></center>
+<p><br /></p>
+
+<p>Nevertheless, the model was still performing quite poorly winning only around 50% of games vs. a completely random player (I expected it to win above 90% of the time). This was after only training 100,000 games, so I decided to keep training and see the results:</p>
+
+<center><img src="./assets/img/posts/20210318/Loss_function_and_Illegal_moves2.png" width="540" />
+<small>Wins: 65.46% Losses: 30.32% Ties: 4.23%</small></center>
+
+<p>Note that when training restarts, the loss and illegal moves are still high in the beginning of the training round, and this is caused by the epsilon greedy strategy that prefers exploration (a completely random move) over exploitation, this preference diminishes over time.</p>
+
+<p>After another round of 100,000 games, I can see that the loss function actually started to diminish, and the win rate ended up at 65%, so with little hope I decided to carry on and do another round of 100,000 games (about 2 hours in an i7 MacBook Pro):</p>
+
+<center><img src="./assets/img/posts/20210318/Loss_function_and_Illegal_moves3.png" width="540" />
+<small>Wins: 46.40% Losses: 41.33% Ties: 12.27%</small></center>
+
+<p>As you can see in the chart, the calculated loss not even plateaued, but it seemed to increase a bit over time, which tells me the model is not learning anymore. This was confirmed by the win rate decreasing with respect of the previous round to a meek 46.4% that looks no better than a random player.</p>
+
+<h3 id="model-2---linear-activation-for-the-output">Model 2 - Linear activation for the output</h3>
+
+<p>After not getting the results I wanted, I decided to change the output activation function to linear, since the output is supposed to be a Q value, and not a probability of an action.</p>
+
+<center><img src="./assets/img/posts/20210318/Loss_function_and_Illegal_moves4.png" width="540" /><br />
+<small>Wins: 47.60% Losses: 39% Ties: 13.4%</small></center>
+<p><br /></p>
+
+<p>Initially I tested with only 1000 games to see if the new activation function was working, the loss function appears to be decreasing, however it reached a plateau around a value of 1, hence still not learning as expected. I came across a <a href="https://github.com/bckenstler/CLR">technique by Brad Kenstler, Carl Thome and Jeremy Jordan</a> called Cyclical Learning Rate, which appears to solve some cases of stagnating loss functions in this type of networks. So I gave it a go using their Triangle 1 model.</p>
+
+<p>With the cycling learning rate in place, still no luck after a quick 1,000 games training round; so I decided to implement on top a decaying learning rate as per the following formula:</p>
+
+<center><img src="./assets/img/posts/20210318/lr_formula.jpeg" width="280" /></center>
+
+<p>The resulting learning rate combining the cycles and decay per epoch is:</p>
+<center><img src="./assets/img/posts/20210318/LR_cycle_decay.png" width="480" />
+<small>Learning Rate = 0.1, Decay = 0.0001, Cycle = 2048 epochs,<br />
+        max Learning Rate factor = 10x</small></center>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">true_epoch</span> <span class="o">=</span> <span class="n">epoch</span> <span class="o">-</span> <span class="n">c</span><span class="p">.</span><span class="n">BATCH_SIZE</span>
+<span class="n">learning_rate</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">learning_rate</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">c</span><span class="p">.</span><span class="n">DECAY_RATE</span><span class="o">*</span><span class="n">true_epoch</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">c</span><span class="p">.</span><span class="n">CLR_ON</span><span class="p">:</span> <span class="n">learning_rate</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">cyclic_learning_rate</span><span class="p">(</span><span class="n">learning_rate</span><span class="p">,</span><span class="n">true_epoch</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@staticmethod</span>
+<span class="k">def</span> <span class="nf">cyclic_learning_rate</span><span class="p">(</span><span class="n">learning_rate</span><span class="p">,</span> <span class="n">epoch</span><span class="p">):</span>
+    <span class="n">max_lr</span> <span class="o">=</span> <span class="n">learning_rate</span><span class="o">*</span><span class="n">c</span><span class="p">.</span><span class="n">MAX_LR_FACTOR</span>
+    <span class="n">cycle</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">floor</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="p">(</span><span class="n">epoch</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">c</span><span class="p">.</span><span class="n">LR_STEP_SIZE</span><span class="p">)))</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">abs</span><span class="p">((</span><span class="n">epoch</span><span class="o">/</span><span class="n">c</span><span class="p">.</span><span class="n">LR_STEP_SIZE</span><span class="p">)</span><span class="o">-</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">cycle</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">learning_rate</span><span class="o">+</span><span class="p">(</span><span class="n">max_lr</span><span class="o">-</span><span class="n">learning_rate</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="p">.</span><span class="nf">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
+</code></pre></div></div>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">c</span><span class="p">.</span><span class="n">DECAY_RATE</span> <span class="o">=</span> <span class="n">learning</span> <span class="n">rate</span> <span class="n">decay</span> <span class="n">rate</span>
+<span class="n">c</span><span class="p">.</span><span class="n">MAX_LR_FACTOR</span> <span class="o">=</span> <span class="n">multiplier</span> <span class="n">that</span> <span class="n">determines</span> <span class="n">the</span> <span class="nb">max</span> <span class="n">learning</span> <span class="n">rate</span>
+<span class="n">c</span><span class="p">.</span><span class="n">LR_STEP_SIZE</span> <span class="o">=</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">epochs</span> <span class="n">each</span> <span class="n">cycle</span> <span class="n">lasts</span>
+</code></pre></div></div>
+<p><br />With these many changes, I decided to restart with a fresh set of random weights and biases and try training more (much more) games.</p>
+
+<center><img src="./assets/img/posts/20210318/Loss_function_and_Illegal_moves6.png" width="540" />
+<small>1,000,000 episodes, 7.5 million epochs with batches of 64 moves each<br />
+Wins: 52.66% Losses: 36.02% Ties: 11.32%</small></center>
+
+<p>After <strong>24 hours!</strong>, my computer was able to run 1,000,000 episodes (games played), which represented 7.5 million training epochs of batches of 64 plays (480 million plays learned), the learning rate did decreased (a bit), but is clearly still in a plateau; interestingly, the lower boundary of the loss function plot seems to continue to decrease as the upper bound and the moving average remains constant. This led me to believe that I might have hit a local minimum.
+<a name="Model3"></a></p>
+<h3 id="model-3---new-network-topology">Model 3 - new network topology</h3>
+
+<p>After all the failures I figured I had to rethink the topology of the network and play around with combinations of different networks and learning rates.</p>
+
+<center><img src="./assets/img/posts/20210318/Loss_function_and_Illegal_moves7.png" width="540" />
+<small>100,000 episodes, 635,000 epochs with batches of 64 moves each<br />
+<b>Wins: 76.83%</b> Losses: 17.35% Ties: 5.82%</small></center>
+
+<p>I increased to 200 neurons each hidden layer. In spite of this great improvement the loss function was still in a plateau at around 0.1 (Mean Squared Error). Which, although it is greatly reduced from what we had, still was giving out only 77% win rate vs. a random player, the network was playing tic tac toe as a toddler!</p>
+
+<center><img src="./assets/img/posts/20210318/Game_Screen2.png" width="240" height="240" />
+<small>*I can still beat the network most of the time! (I am playing with the red X)*</small></center>
+
+<center><img src="./assets/img/posts/20210318/Loss_function_and_Illegal_moves10.png" width="540" />
+<small>100,000 more episodes, 620,000 epochs with batches of 64 moves each<br />
+<b>Wins: 82.25%</b> Losses: 13.28% Ties: 4.46%</small></center>
+
+<p><strong>Finally we crossed the 80% mark!</strong> This is quite an achievement, it seems that the change in network topology is working, although it also looks like the loss function is stagnating at around 0.15.</p>
+
+<p>After more training rounds and some experimenting with the learning rate and other parameters, I couldn’t improve past the 82.25% win rate.</p>
+
+<p>These have been the results so far:</p>
+
+<center><img src="./assets/img/posts/20210318/Models1to3.png" width="540" /></center>
+<p><br /></p>
+
+<p>It is quite interesting to learn how the many parameters (hyper-parameters as most authors call them) of a neural network model affect its training performance, I have played with:</p>
+<ul>
+  <li>the learning rate</li>
+  <li>the network topology and activation functions</li>
+  <li>the cycling and decaying learning rate parameters</li>
+  <li>the batch size</li>
+  <li>the target update cycle (when the target network is updated with the weights from the policy network)</li>
+  <li>the rewards policy</li>
+  <li>the epsilon greedy strategy</li>
+  <li>whether to train vs. a random player or an “intelligent” AI.</li>
+</ul>
+
+<p>And so far the most effective change has been the network topology, but being so close but not quite there yet to my goal of 90% win rate vs. a random player, I will still try to optimize further.</p>
+
+<tweet>Network topology seems to have the biggest impact on a neural network's learning ability.</tweet>
+
+<p><a name="Model4"></a></p>
+<h3 id="model-4---implementing-momentum">Model 4 - implementing momentum</h3>
+
+<p>I <a href="https://www.reddit.com/r/MachineLearning/comments/lzvrwp/p_help_with_a_reinforcement_learning_project/">reached out to the reddit community</a> and a kind soul pointed out that maybe what I need is to apply momentum to the optimization algorithm. So I did some research and ended up deciding to implement various optimization methods to experiment with:</p>
+
+<ul>
+  <li>Stochastic Gradient Descent with Momentum</li>
+  <li>RMSProp: Root Mean Square Plain Momentum</li>
+  <li>NAG: Nezterov’s Accelerated Momentum</li>
+  <li>Adam: Adaptive Moment Estimation</li>
+  <li>and keep my old vanilla Gradient Descent (vGD) ☺</li>
+</ul>
+
+<p><a name="optimization"></a><a href="https://the-mvm.github.io/neural-network-optimization-methods/">Click here for a detailed explanation and code of all the implemented optimization algorithms.</a></p>
+
+<p>So far, I have not been able to get better results with Model 4, I have tried all the momentum optimization algorithms with little to no success.
+<a name="Model5"></a></p>
+<h3 id="model-5---implementing-one-hot-encoding-and-changing-topology-again">Model 5 - implementing one-hot encoding and changing topology (again)</h3>
+<p>I came across an <a href="https://github.com/AxiomaticUncertainty/Deep-Q-Learning-for-Tic-Tac-Toe/blob/master/tic_tac_toe.py">interesting project in Github</a> that deals exactly with Deep Q Learning, and I noticed that he used “one-hot” encoding for the input as opposed to directly entering the values of the player into the 9 input slots. So I decided to give it a try and at the same time change my topology to match his:</p>
+
+<center><img src="./assets/img/posts/20210318/Neural_Network_Topology3.png" width="540" /></center>
+
+<p>So, ‘one hot’ encoding is basically changing the input of a single square in the tic tac toe board to three numbers, so that each state is represented with different inputs, thus the network can clearly differentiate the three of them. As the original author puts it, the way I was encoding, having 0 for empty, 1 for X and 2 for O, the network couldn’t easily tell that, for instance, O and X both meant occupied states, because one is two times as far from 0 as the other. With the new encoding, the empty state will be 3 inputs: (1,0,0), the X will be (0,1,0) and the O (0,0,1) as in the diagram.</p>
+
+<p>Still, no luck even with Model 5, so I am starting to think that there could be a bug in my code.</p>
+
+<p>To test this hypothesis, I decided to implement the same model using Tensorflow / Keras.</p>
+
+<p><a name="Model6"></a></p>
+<h3 id="model-6---tensorflow--keras">Model 6 - Tensorflow / Keras</h3>
+<center><img src="https://www.kubeflow.org/docs/images/logos/TensorFlow.png" width="100" height="100" /></center>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">self</span><span class="p">.</span><span class="n">PolicyNetwork</span> <span class="o">=</span> <span class="nc">Sequential</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">hidden_layers</span><span class="p">:</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">PolicyNetwork</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="nc">Dense</span><span class="p">(</span>
+                           <span class="n">units</span><span class="o">=</span><span class="n">layer</span><span class="p">,</span>
+                           <span class="n">activation</span><span class="o">=</span><span class="sh">'</span><span class="s">relu</span><span class="sh">'</span><span class="p">,</span>
+                           <span class="n">input_dim</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span>
+                           <span class="n">kernel_initializer</span><span class="o">=</span><span class="sh">'</span><span class="s">random_uniform</span><span class="sh">'</span><span class="p">,</span>
+                           <span class="n">bias_initializer</span><span class="o">=</span><span class="sh">'</span><span class="s">zeros</span><span class="sh">'</span><span class="p">))</span>
+<span class="n">self</span><span class="p">.</span><span class="n">PolicyNetwork</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="nc">Dense</span><span class="p">(</span>
+                        <span class="n">outputs</span><span class="p">,</span>
+                        <span class="n">kernel_initializer</span><span class="o">=</span><span class="sh">'</span><span class="s">random_uniform</span><span class="sh">'</span><span class="p">,</span>
+                        <span class="n">bias_initializer</span><span class="o">=</span><span class="sh">'</span><span class="s">zeros</span><span class="sh">'</span><span class="p">))</span>
+<span class="n">opt</span> <span class="o">=</span> <span class="nc">Adam</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="n">c</span><span class="p">.</span><span class="n">LEARNING_RATE</span><span class="p">,</span>
+           <span class="n">beta_1</span><span class="o">=</span><span class="n">c</span><span class="p">.</span><span class="n">GAMMA_OPT</span><span class="p">,</span>
+           <span class="n">beta_2</span><span class="o">=</span><span class="n">c</span><span class="p">.</span><span class="n">BETA</span><span class="p">,</span>
+           <span class="n">epsilon</span><span class="o">=</span><span class="n">c</span><span class="p">.</span><span class="n">EPSILON</span><span class="p">,</span>
+           <span class="n">amsgrad</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">self</span><span class="p">.</span><span class="n">PolicyNetwork</span><span class="p">.</span><span class="nf">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="sh">'</span><span class="s">adam</span><span class="sh">'</span><span class="p">,</span>
+                           <span class="n">loss</span><span class="o">=</span><span class="sh">'</span><span class="s">mean_squared_error</span><span class="sh">'</span><span class="p">,</span>
+                           <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="sh">'</span><span class="s">accuracy</span><span class="sh">'</span><span class="p">])</span>
+</code></pre></div></div>
+<p>As you can see I am reusing all of my old code, and just replacing my Neural Net library with Tensorflow/Keras, keeping even my hyper-parameter constants.</p>
+
+<p>The training function changed to:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">reduce_lr_on_plateau</span> <span class="o">=</span> <span class="nc">ReduceLROnPlateau</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="sh">'</span><span class="s">loss</span><span class="sh">'</span><span class="p">,</span>
+                                         <span class="n">factor</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+                                         <span class="n">patience</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">history</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">PolicyNetwork</span><span class="p">.</span><span class="nf">fit</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">asarray</span><span class="p">(</span><span class="n">states_to_train</span><span class="p">),</span>
+                                 <span class="n">np</span><span class="p">.</span><span class="nf">asarray</span><span class="p">(</span><span class="n">targets_to_train</span><span class="p">),</span>
+                                 <span class="n">epochs</span><span class="o">=</span><span class="n">c</span><span class="p">.</span><span class="n">EPOCHS</span><span class="p">,</span>
+                                 <span class="n">batch_size</span><span class="o">=</span><span class="n">c</span><span class="p">.</span><span class="n">BATCH_SIZE</span><span class="p">,</span>
+                                 <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                                 <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">reduce_lr_on_plateau</span><span class="p">],</span>
+                                 <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>With Tensorflow implemented, the first thing I noticed, was that I had an error in the calculation of the loss, although this only affected reporting and didn’t change a thing on the training of the network, so the results kept being the same, <strong>the loss function was still stagnating! My code was not the issue.</strong>
+<a name="Model7"></a></p>
+<h3 id="model-7---changing-the-training-schedule">Model 7 - changing the training schedule</h3>
+<p>Next I tried to change the way the network was training as per <a href="https://www.reddit.com/user/elBarto015">u/elBarto015</a> <a href="https://www.reddit.com/r/reinforcementlearning/comments/lzzjar/i_created_an_ai_for_super_hexagon_based_on/gqc8ka6?utm_source=share&amp;utm_medium=web2x&amp;context=3">advised me on reddit</a>.</p>
+
+<p>The way I was training initially was:</p>
+<ul>
+  <li>Games begin being simulated and the outcome recorded in the replay memory</li>
+  <li>Once a sufficient ammount of experiences are recorded (at least equal to the batch size) the Network will train with a random sample of experiences from the replay memory. The ammount of experiences to sample is the batch size.</li>
+  <li>The games continue to be played between the random player and the network.</li>
+  <li>Every move from either player generates a new training round, again with a random sample from the replay memory.</li>
+  <li>This continues until the number of games set up conclude.</li>
+</ul>
+
+<center><img src="./assets/img/posts/20210318/ReplayMemoryBefore.png" width="540" /></center>
+
+<p>The first change was to train only after every game concludes with the same ammount of data (a batch). This was still not giving any good results.</p>
+
+<p>The second change was more drastic, it introduced the concept of epochs for every training round, it basically sampled the replay memory for epochs * batch size experiences, for instance if epochs selected were 10, and batch size was 81, then 810 experiences were sampled out of the replay memory. With this sample the network was then trained for 10 epochs randomly using the batch size.</p>
+
+<p>This meant that I was training now effectively 10 (or the number of epochs selected) times more per game, but in batches of the same size and randomly shuffling the experiences each epoch.</p>
+
+<center><img src="./assets/img/posts/20210318/ReplayMemoryAfter.png" width="540" /></center>
+<p><br /></p>
+
+<p>After still playing around with some hyperparameters I managed to get similar performance as I got before, reaching 83.15% win rate vs. the random player, so I decided to keep training in rounds of 2,000 games each to evaluate performance. With almost every round I could see improvement:</p>
+
+<center><img src="./assets/img/posts/20210318/Model7HyperParameters.png" width="540" /><br />
+<img src="./assets/img/posts/20210318/Model7.png" width="480" />
+</center>
+<p><br /></p>
+
+<p>As of today, my best result so far is 87.5%, I will leave it rest for a while and keep investigating to find a reason for not being able to reach at least 90%. I read about <a href="https://medium.com/applied-data-science/how-to-train-ai-agents-to-play-multiplayer-games-using-self-play-deep-reinforcement-learning-247d0b440717">self play</a>, and it looks like a viable option to test and a fun coding challenge. However, before embarking in yet another big change I want to ensure I have been thorough with the model and have tested every option correctly.</p>
+
+<p>I feel the end is near… should I continue to update this post as new events unfold or shall I make it a multi post thread?</p>
+
+        <aside class="sidebar inline" id="post-end">
+    
+
+
+
+<div class="tag-cloud">
+    
+        <ul class="tags inline">
+            
+                <li><a href="./tag.html?tag=machine+learning" class="tag inline">machine learning</a></li>
+            
+                <li><a href="./tag.html?tag=artificial+intelligence" class="tag inline">artificial intelligence</a></li>
+            
+                <li><a href="./tag.html?tag=reinforcement+learning" class="tag inline">reinforcement learning</a></li>
+            
+                <li><a href="./tag.html?tag=coding" class="tag inline">coding</a></li>
+            
+                <li><a href="./tag.html?tag=python" class="tag inline">python</a></li>
+            
+    
+        </ul>
+</div>
+    <div class="share-options inline">
+    <div class="share-hover inline">
+        <span class="share-button inline"><svg fill="currentColor" width="25" height="25" class="inline"><g fill-rule="evenodd"><path d="M15.6 5a.42.42 0 0 0 .17-.3.42.42 0 0 0-.12-.33l-2.8-2.79a.5.5 0 0 0-.7 0l-2.8 2.8a.4.4 0 0 0-.1.32c0 .12.07.23.16.3h.02a.45.45 0 0 0 .57-.04l2-2V10c0 .28.23.5.5.5s.5-.22.5-.5V2.93l2.02 2.02c.08.07.18.12.3.13.11.01.21-.02.3-.08v.01"></path><path d="M18 7h-1.5a.5.5 0 0 0 0 1h1.6c.5 0 .9.4.9.9v10.2c0 .5-.4.9-.9.9H6.9a.9.9 0 0 1-.9-.9V8.9c0-.5.4-.9.9-.9h1.6a.5.5 0 0 0 .35-.15A.5.5 0 0 0 9 7.5a.5.5 0 0 0-.15-.35A.5.5 0 0 0 8.5 7H7a2 2 0 0 0-2 2v10c0 1.1.9 2 2 2h11a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2"></path></g></svg></span>
+        <div class="share-icons inline" id="post-end-icons">
+            <a class="twitter" href="https://twitter.com/intent/tweet?text=Deep Q Learning for Tic Tac Toe&url=http://localhost:4000/deep-q-learning-tic-tac-toe.html" title="Share on Twitter" rel="nofollow" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            <a class="facebook" href="https://facebook.com/sharer.php?u=http://localhost:4000/deep-q-learning-tic-tac-toe.html" title="Share on Facebook" rel="nofollow" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a class="reddit" href="http://www.reddit.com/submit?url=http://localhost:4000/deep-q-learning-tic-tac-toe.html&title=Deep Q Learning for Tic Tac Toe" title="Submit to Reddit" rel="nofollow" target="_blank"><i class="fa fa-reddit" aria-hidden="true"></i></a>
+            <a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/deep-q-learning-tic-tac-toe.html&title=Deep Q Learning for Tic Tac Toe&summary=Inspired by Deep Mind's astonishing feats of having their Alpha Go, Alpha Zero and Alpha Star programs learn (and be amazing at it) Go, Chess, Atari games and lately Starcraft; I set myself to the task of programming a neural network that will learn by itself how to play the ancient game of tic tac toe. How hard could it be?&source=http://localhost:4000/deep-q-learning-tic-tac-toe.html" title="Share on LinkedIn" rel="nofollow" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+            <a class="email" href="mailto:?subject=Deep Q Learning for Tic Tac Toe&body=Inspired by Deep Mind's astonishing feats of having their Alpha Go, Alpha Zero and Alpha Star programs learn (and be amazing at it) Go, Chess, Atari games and lately Starcraft; I set myself to the task of programming a neural network that will learn by itself how to play the ancient game of tic tac toe. How hard could it be?%0A%0ARead more here: http://localhost:4000/deep-q-learning-tic-tac-toe.html" title="Share via e-mail" rel="nofollow" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+            <a class="copy-link" onclick="copyToClipboard()" title="Copy to clipboard" rel="nofollow" target="_blank"><svg width="20px" fill="currentColor" class="inline" viewBox="0 0 18 18"><path d="M16.94 1.1A3.7 3.7 0 0 0 14.3 0c-1 0-1.94.39-2.64 1.1L7.43 5.3c-.91.92-2.09 3.2 0 5.27a.75.75 0 0 0 .82.16c.09-.03.17-.09.24-.15a.74.74 0 0 0 0-1.06c-1.16-1.15-.77-2.39-.02-3.16l4.24-4.22a2.2 2.2 0 0 1 1.58-.65c.6 0 1.16.23 1.58.65.86.87.86 2.29 0 3.16L12.7 8.47a.74.74 0 0 0 1.04 1.05l3.17-3.16a3.73 3.73 0 0 0 0-5.27h.03zM9.54 7.4a.74.74 0 0 0 0 1.06c1.16 1.15.76 2.39 0 3.16l-4.22 4.22c-.42.42-.99.65-1.59.65a2.23 2.23 0 0 1-1.58-3.82l3.17-3.16A.73.73 0 0 0 5.54 9a.78.78 0 0 0-.22-.52.77.77 0 0 0-1.05 0L1.1 11.64A3.72 3.72 0 0 0 3.74 18c1 0 1.94-.39 2.65-1.1l4.23-4.2c.21-.22.94-1.02 1.13-2.2.18-1.12-.2-2.15-1.12-3.07-.27-.27-.78-.27-1.06 0l-.02-.02z" clip-rule="evenodd" fill-rule="evenodd"></path></svg></a>
+        </div>
+    </div>
+    <div class='alert' style='font-size:.6em;color:var(--accent);text-align:center;'></div>
+</div>
+</aside>
+
+        <div class="separator"></div>
+        
+
+
+
+<section class="author-box">
+  <div class="narrow-column">
+    <a href=''><img src="./assets/img/Myself-Neon.png" alt="Vera Breen" class="author-img"></a>
+    <ul class="contact-icons">
+      
+      
+      
+      
+      <li class="email"><a class="email" href="mailto:verabreen@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
+      
+      
+    </ul>
+  </div>
+  <div class="author-desc">
+    <h3>Vera Breen</h3>
+    <p>Fantasy Romance and Erotica Author</p>
+  </div>
+</section>
+
+        
+
+
+
+<div class="recent-box">
+  <h2 class="page-subtitle">Recent posts</h2>
+  <div class="recent-list">
+    
+      
+        <div class="recent-item">
+          
+          
+
+          <a href="./AI-and-intellectual-property.html" class="recent-item-img" style="background: url('./assets/img/posts/20210420/post8-rembrandt.jpg') center no-repeat; background-size: cover;">
+            <div class="recent-item-title">
+              <span>Who owns the copyright for an AI generated creative work?</span>
+              
+
+  <span class = "recent-item-meta">
+  
+  
+  
+  
+    
+    
+    <p class="page_meta-readtime">
+      
+        4 minute read
+      
+    </p>
+  
+  
+  </span>
+
+            </div>
+          </a>
+        </div>
+      
+    
+      
+        <div class="recent-item">
+          
+          
+
+          <a href="./back-to-basics.html" class="recent-item-img" style="background: url('./assets/img/posts/20210402/post7-header.webp') center no-repeat; background-size: cover;">
+            <div class="recent-item-title">
+              <span>So, what is a neural network?</span>
+              
+
+  <span class = "recent-item-meta">
+  
+  
+  
+  
+    
+    
+    <p class="page_meta-readtime">
+      
+        9 minute read
+      
+    </p>
+  
+  
+  </span>
+
+            </div>
+          </a>
+        </div>
+      
+    
+      
+        <div class="recent-item">
+          
+          
+
+          <a href="./starting-the-adventure.html" class="recent-item-img" style="background: url('./assets/img/posts/20210324/starting_adventure.jpg') center no-repeat; background-size: cover;">
+            <div class="recent-item-title">
+              <span>Starting the adventure</span>
+              
+
+  <span class = "recent-item-meta">
+  
+  
+  
+  
+    
+    
+    <p class="page_meta-readtime">
+      
+        11 minute read
+      
+    </p>
+  
+  
+  </span>
+
+            </div>
+          </a>
+        </div>
+      
+    
+      
+        <div class="recent-item">
+          
+          
+
+          <a href="./deep-q-learning-tic-tac-toe.html" class="recent-item-img" style="background: url('./assets/img/posts/20210318/TicTacToeSml.jpg') center no-repeat; background-size: cover;">
+            <div class="recent-item-title">
+              <span>Deep Q Learning for Tic Tac Toe</span>
+              
+
+  <span class = "recent-item-meta">
+  
+  
+  
+  
+    
+    
+    <p class="page_meta-readtime">
+      
+        12 minute read
+      
+    </p>
+  
+  
+  </span>
+
+            </div>
+          </a>
+        </div>
+      
+    
+  </div>
+</div> <!-- End Recent-Box -->
+
+        <div class="newsletter" id="mc_embed_signup">
+  <h2 class="page-subtitle">Newsletter</h2>
+  <div class="form-container">
+    <p>Subscribe here to get our latest updates</p>
+    <form action="" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+      <label class="screen-reader-text" for="mce-EMAIL">Email Address</label>
+      <div class="newsletter-box" id="mc_embed_signup_scroll">
+        <input type="email" name="EMAIL" placeholder="Email address" class="email-input" id="mce-EMAIL" required>
+        <input type="submit" value="Subscribe" name="subscribe" class="subscribe-btn" id="mc-embedded-subscribe">
+      </div>
+    </form>
+  </div>
+</div> <!-- End Newsletter -->
+
+      </div>
+    </div> <!-- End Wrapper -->
+  </article>
+  <div class="search-box">
+  <div class="wrapper">
+    <div class="search-grid">
+      <form class="search-form">
+        <div id="search-container">
+          <input type="text" id="search-input" class="search" placeholder="Search">
+        </div>
+      </form>
+      <ul id="results-container" class="results-search"></ul>
+      <div class="icon-close-container">
+        <span class="search-icon-close"><i class="fa fa-times" aria-hidden="true"></i></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+    <div class="top" title="Top">
+      <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="angle-up" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" class="svg-inline--fa fa-angle-up fa-w-8 fa-2x"><path fill="currentColor" d="M136.5 185.1l116 117.8c4.7 4.7 4.7 12.3 0 17l-7.1 7.1c-4.7 4.7-12.3 4.7-17 0L128 224.7 27.6 326.9c-4.7 4.7-12.3 4.7-17 0l-7.1-7.1c-4.7-4.7-4.7-12.3 0-17l116-117.8c4.7-4.6 12.3-4.6 17 .1z" class=""></path></svg>
+    </div>
+    
+
+
+
+
+<!-- JS -->
+
+
+
+
+
+
+
+
+<script>
+(function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var logo = document.getElementById('logo');
+    var nightModeOption = ('manual' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+    storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+    var data = storage.getItem('theme');
+    try {
+        data = JSON.parse(data ? data : '');
+    } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+    }
+    return data;
+    }
+
+    /*
+    function handleThemeToggle(nightShift) {
+    themeData.nightShift = nightShift;
+    saveThemeData(themeData);
+    html.dataset.theme = nightShift ? 'dark' : 'light';
+    if (nightShift) {
+        logo.setAttribute("src", "./assets/img/branding/MVM-logo-full-dark.svg");
+    } else {
+        logo.setAttribute("src", "./assets/img/branding/MVM-logo-full.svg");
+    }
+    setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+    }, 50);
+    }
+    */
+
+    function handleThemeToggle(nightShift) {
+    themeData.nightShift = nightShift;
+        saveThemeData(themeData);
+        html.dataset.theme = 'dark';
+        logo.setAttribute("src", "./assets/img/branding/MVM-logo-full-dark.svg");
+    }
+
+    function autoThemeToggle() {
+    // Next time point of theme toggle
+    var now = new Date();
+    var toggleAt = new Date();
+    var hours = now.getHours();
+    var nightShift = hours >= 19 || hours <=7;
+
+    if (nightShift) {
+        if (hours > 7) {
+        toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+    } else {
+        toggleAt.setHours(19);
+    }
+
+    toggleAt.setMinutes(0);
+    toggleAt.setSeconds(0);
+    toggleAt.setMilliseconds(0)
+
+    var delay = toggleAt.getTime() - now.getTime();
+
+    // auto toggle theme mode
+    setTimeout(function() {
+        handleThemeToggle(!nightShift);
+    }, delay);
+
+    return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+    };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+    handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+    var data = autoThemeToggle();
+
+    // Toggle theme by local setting
+    if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+    } else {
+        handleThemeToggle(themeData.nightShift);
+    }
+    } else if (nightModeOption == 'manual') {
+    handleThemeToggle(themeData.nightShift);
+    } else {
+    var nightShift = themeData.nightShift;
+    if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+    }
+    handleThemeToggle(nightShift);
+    }
+})();
+</script>
+
+<script src="./assets/js/jekyll-search.js"></script>
+<script src="./assets/js/jquery-3.6.0.min.js"></script>
+
+
+  <script>
+    function toggle_comments(){
+      var commentCurtain = document.getElementById('comment-curtain')
+      if (commentCurtain) {
+        commentCurtain.classList.toggle('hide')
+      }
+      var disqusThread = document.getElementById('comment-layout')
+      if (disqusThread) {
+        disqusThread.classList.toggle('show')
+      }
+    }
+
+    function copyToClipboard() {
+      navigator.clipboard.writeText('http://localhost:4000/deep-q-learning-tic-tac-toe.html').then(function() {
+      alerts = document.getElementsByClassName('alert')
+      for (i=0; i < alerts.length; i++){
+        alerts[i].innerHTML='\u00ABlink copied\u00BB';
+        setTimeout((function(i){ return function(){alerts[i].innerHTML='';}})(i), 1600 );
+      };
+      }, function() {
+        prompt("Unable to copy, please use this link:", "http://localhost:4000/deep-q-learning-tic-tac-toe.html");
+      });
+    }
+
+    $(function () {
+      if (document.getElementById('comment-curtain') == null){
+        var disqusThread = document.getElementById('comment-layout')
+        if (disqusThread) {
+          disqusThread.classList.toggle('show')
+        }
+      }
+
+      var tweetTags = document.getElementsByTagName("tweet");
+
+      if (tweetTags != null){
+        for (i=0; i<tweetTags.length; i++){
+          tweetA = document.createElement("a")
+          tweetA.href = 'https://twitter.com/share?text='
+                       + encodeURIComponent(tweetTags[i].textContent)
+                       + '&via=&url='
+                       + window.location.href;
+          tweetA.target = "_blank";
+          tweetA.className = 'twitter';
+          tweetSpanText = document.createElement('span');
+          tweetSpanText.className = 'tweetText';
+          tweetSpanText.appendChild(document.createTextNode(tweetTags[i].textContent));
+          tweetSpanIcon = document.createElement('span');
+          tweetSpanIcon.className = 'tweetIcon';
+          tweetSpanIcon.appendChild(document.createTextNode("click to tweet"));
+          tweetI = document.createElement("i");
+          tweetI.className = 'fa fa-twitter';
+          tweetSpanIcon.appendChild(tweetI);
+          tweetA.appendChild(tweetSpanText);
+          tweetA.appendChild(tweetSpanIcon);
+          tweetTags[i].textContent = "";
+          tweetTags[i].appendChild(tweetA);
+        }
+      }
+
+    });
+
+  </script>
+  <!-- Mailchimp linking -->
+  <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/8ece198b3eb260e6838461a60/d20d9fb9aad962399025da52e.js");</script>
+
+
+
+  <script src="https://cdn.jsdelivr.net/gh/cferdinandi/gumshoe@5.1.1/dist/gumshoe.polyfills.min.js"></script>
+  <script>
+    var spy = new Gumshoe("#toc-content a", {
+      navClass:"active",
+      contentClass:"underline",
+      nested:0,
+      nestedClass:"active",
+      offset:20,
+      reflow:1,
+      events:1
+    });
+
+    var coll = document.getElementsByClassName("toc-item-1");
+    var i;
+    var chevron_up = "<svg aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 256 512\"><path fill=\"currentColor\" d=\"M136.5 185.1l116 117.8c4.7 4.7 4.7 12.3 0 17l-7.1 7.1c-4.7 4.7-12.3 4.7-17 0L128 224.7 27.6 326.9c-4.7 4.7-12.3 4.7-17 0l-7.1-7.1c-4.7-4.7-4.7-12.3 0-17l116-117.8c4.7-4.6 12.3-4.6 17 .1z\"></path></svg>"
+    var chevron_down = "<svg aria-hidden=\"true\" focusable=\"false\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 256 512\"><path fill=\"currentColor\" d=\"M119.5 326.9L3.5 209.1c-4.7-4.7-4.7-12.3 0-17l7.1-7.1c4.7-4.7 12.3-4.7 17 0L128 287.3l100.4-102.2c4.7-4.7 12.3-4.7 17 0l7.1 7.1c4.7 4.7 4.7 12.3 0 17L136.5 327c-4.7 4.6-12.3 4.6-17-.1z\"></path></svg>"
+    for (i = 0; i < coll.length; i++) {
+      if (coll[i].childElementCount > 1) {
+        sign = document.createElement('div');
+        sign.className = "toc-sign";
+        sign.innerHTML = chevron_down;
+        coll[i].insertBefore(sign, coll[i].childNodes[0].nextSibling);
+        coll[i].addEventListener("click", function() {
+          var content = this.lastElementChild;
+          if (content.style.maxHeight){
+            content.style.maxHeight = null;
+            this.firstElementChild.nextSibling.innerHTML = chevron_down;
+          } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+            this.firstElementChild.nextSibling.innerHTML = chevron_up;
+          }
+        });
+      }
+    }
+  </script>
+
+
+
+
+<script src="./assets/js/main.js"></script>
+<script>
+  SimpleJekyllSearch({
+      searchInput: document.getElementById('search-input'),
+      resultsContainer: document.getElementById('results-container'),
+      json: './search.json',
+      searchResultTemplate: '<li><a href="{url}" title="{description}">{title}</a><p>{description}</p></li>',
+      noResultsText: 'No results found',
+      fuzzy: false,
+      exclude: ['Welcome']
+    });
+</script>
+
+
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R8SZS2YBZK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-R8SZS2YBZK');
+</script>
+  </body>
+</html>

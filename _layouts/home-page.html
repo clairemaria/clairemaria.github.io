@@ -1,0 +1,30 @@
+---
+layout: default
+---
+<div class="flex-container transparent">
+  {% include header.html %}
+  <div class="content wrapper">
+
+    <div class="page-image">
+      <div class="cover-image" style="background: url('./assets/img/posts/20210318/TicTacToeSml.jpg') center no-repeat; background-size: cover;"></div>
+    </div>
+    <div class="wrapper">
+      <div class="page-content">
+        <div class="header-page">
+          <h1 class="page-title">Deep Q Learning for Tic Tac Toe</h1>
+  <span class = "post-page-meta">
+    <p class="page_meta">
+      <span class="page_meta-date"><time datetime="2021-03-18T15:14:20-06:00">March 18, 2021</time></span>
+      <span class="meta-sep"></span>
+    <span class="page_meta-readtime">12 minute read</span>
+
+
+    {{ content }}
+    {% include search.html %}
+    {% include pagination.html %}
+    <div class="center-tags">
+      {% include get-site-tags.html %}
+      {% include tag_cloud.html %}
+    </div>
+  </div> <!-- End Wrapper -->
+</div><!-- End flex-container -->
