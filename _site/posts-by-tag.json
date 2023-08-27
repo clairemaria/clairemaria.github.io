@@ -3,14 +3,40 @@
 [   
       
   {
+  "tag" : "AI art",
+  "posts" : [
+      
+      "./AI-art.html"
+      
+    ]
+  } ,
+    
+      
+  {
+  "tag" : "DIY hard",
+  "posts" : [
+      
+      "./author-website-gh-pages.html"
+      
+    ]
+  } ,
+    
+      
+  {
   "tag" : "artificial intelligence",
   "posts" : [
       
-      "./AI-and-intellectual-property.html",
-      
-      "./back-to-basics.html",
-      
       "./deep-q-learning-tic-tac-toe.html"
+      
+    ]
+  } ,
+    
+      
+  {
+  "tag" : "bda",
+  "posts" : [
+      
+      "./bda.html"
       
     ]
   } ,
@@ -27,6 +53,16 @@
     
       
   {
+  "tag" : "book releases",
+  "posts" : [
+      
+      "./bda.html"
+      
+    ]
+  } ,
+    
+      
+  {
   "tag" : "coding",
   "posts" : [
       
@@ -34,19 +70,7 @@
       
       "./neural-network-optimization-methods.html",
       
-      "./ML-Library-from-scratch.html",
-      
-      "./conways-game-of-life.html"
-      
-    ]
-  } ,
-    
-      
-  {
-  "tag" : "copyright",
-  "posts" : [
-      
-      "./AI-and-intellectual-property.html"
+      "./ML-Library-from-scratch.html"
       
     ]
   } ,
@@ -56,7 +80,7 @@
   "tag" : "creativity",
   "posts" : [
       
-      "./AI-and-intellectual-property.html"
+      "./AI-art.html"
       
     ]
   } ,
@@ -77,6 +101,16 @@
   "posts" : [
       
       "./single-neuron-perceptron.html"
+      
+    ]
+  } ,
+    
+      
+  {
+  "tag" : "ethics",
+  "posts" : [
+      
+      "./AI-art.html"
       
     ]
   } ,
@@ -123,6 +157,16 @@
     
       
   {
+  "tag" : "id",
+  "posts" : [
+      
+      "./picking-titles.html"
+      
+    ]
+  } ,
+    
+      
+  {
   "tag" : "life",
   "posts" : [
       
@@ -135,10 +179,6 @@
   {
   "tag" : "machine learning",
   "posts" : [
-      
-      "./AI-and-intellectual-property.html",
-      
-      "./back-to-basics.html",
       
       "./deep-q-learning-tic-tac-toe.html",
       
@@ -153,10 +193,6 @@
   {
   "tag" : "neural networks",
   "posts" : [
-      
-      "./AI-and-intellectual-property.html",
-      
-      "./back-to-basics.html",
       
       "./ML-Library-from-scratch.html"
       
@@ -175,14 +211,22 @@
     
       
   {
+  "tag" : "pleasure",
+  "posts" : [
+      
+      "./picking-titles.html"
+      
+    ]
+  } ,
+    
+      
+  {
   "tag" : "python",
   "posts" : [
       
       "./deep-q-learning-tic-tac-toe.html",
       
-      "./ML-Library-from-scratch.html",
-      
-      "./conways-game-of-life.html"
+      "./ML-Library-from-scratch.html"
       
     ]
   } ,
@@ -203,6 +247,16 @@
   "posts" : [
       
       "./starting-the-adventure.html"
+      
+    ]
+  } ,
+    
+      
+  {
+  "tag" : "titles",
+  "posts" : [
+      
+      "./picking-titles.html"
       
     ]
   } ,

@@ -824,6 +824,13 @@ svg.menu-icon-house {
   margin: 50px 0 15px;
   padding: 0;
 }
+
+.book-card-box {
+  margin: 50px 0 15px;
+  padding: 0;
+}
+
+
 .post-card-box li {
   position: relative;
   list-style: none;
@@ -831,9 +838,21 @@ svg.menu-icon-house {
   width: 50%;
 }
 
+.book-card-box li {
+  position: relative;
+  list-style: none;
+  float: left;
+  width: 40%;
+}
+
 .post-card {
   position: relative;
 }
+
+.book-card {
+  position: relative;
+}
+
 .post-card-image {
   display: block;
   width: 100%;
@@ -842,6 +861,16 @@ svg.menu-icon-house {
   background-position: center;
   background-repeat: no-repeat;
 }
+
+.book-card-image {
+  display: block;
+  width: 100%;
+  min-height:600px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .post-card-image::after {
   content: "";
   display: block;
@@ -854,11 +883,33 @@ svg.menu-icon-house {
   -webkit-transition: all .5s;
   transition: all .5s;
 }
+
+.book-card-image::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255,255,255,.15);
+  -webkit-transition: all .5s;
+  transition: all .5s;
+}
+
 .post-card:hover .post-card-image::after{
   background: rgba(0, 0, 0, 0);
 }
 
+.book-card:hover .book-card-image::after{
+  background: rgba(0, 0, 0, 0);
+}
+
 .post-card:hover .post-card-body{
+  background-color: #000000bf;
+}
+
+.book-card:hover .book-card-body{
   background-color: #000000bf;
 }
 
@@ -870,7 +921,21 @@ svg.menu-icon-house {
   padding-left: 5px;
   width: 95%
 }
+
+.book-card-body {
+  position: absolute;
+  left: 5%;
+  bottom: 5%;
+  background-color: #00000099;
+  padding-left: 5px;
+  width: 95%
+}
+
 .post-card-tags{
+  font-size: 10px
+}
+
+.book-card-tags{
   font-size: 10px
 }
 
@@ -889,6 +954,13 @@ svg.menu-icon-house {
   color: white;
   line-height: 1.2;
 }
+
+.book-card-title-and-meta {
+  margin:0;
+  color: white;
+  line-height: 1.2;
+}
+
 .post-card-link {
   text-decoration: none;
   font-family: var(--font2), sans-serif;
@@ -896,7 +968,21 @@ svg.menu-icon-house {
   text-transform: uppercase;
   color: white;
 }
+
+.book-card-link {
+  text-decoration: none;
+  font-family: var(--font2), sans-serif;
+  font-weight: var(--font2-bold);
+  text-transform: uppercase;
+  color: white;
+}
+
 .post-card-link:hover {
+  opacity: .75;
+  color: var(--grey4);
+}
+
+.book-card-link:hover {
   opacity: .75;
   color: var(--grey4);
 }

@@ -1,11 +1,13 @@
 {
   "posts" : [
     
+    "./AI-art.html",
+    
     "./author-website-gh-pages.html",
     
-    "./AI-and-intellectual-property.html",
+    "./picking-titles.html",
     
-    "./back-to-basics.html",
+    "./bda.html",
     
     "./starting-the-adventure.html",
     
@@ -14,8 +16,6 @@
     "./neural-network-optimization-methods.html",
     
     "./ML-Library-from-scratch.html",
-    
-    "./conways-game-of-life.html",
     
     "./single-neuron-perceptron.html"
     

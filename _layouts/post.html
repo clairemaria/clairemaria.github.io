@@ -1,6 +1,15 @@
 ---
 layout: default
 ---
+
+<script
+    type="text/javascript"
+    async defer
+    src="//assets.pinterest.com/js/pinit.js"
+></script>
+
+
+
 {% include calculate_relative_base.html %}
 {% capture post_url %}{{ relativebase }}{{ page.url }}{% endcapture %}
 {% assign post_url = post_url | replace: "//", "/" %}

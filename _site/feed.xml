@@ -1,152 +1,231 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-08-26T18:14:21-06:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">The Vera Breen - Author</title><subtitle>Artificial Intelligence trends and concepts made easy.</subtitle><author><name>Vera Breen</name></author><entry><title type="html">Author Websites with Github Pages</title><link href="http://localhost:4000/author-website-gh-pages.html" rel="alternate" type="text/html" title="Author Websites with Github Pages" /><published>2023-08-24T15:14:20-06:00</published><updated>2023-08-24T15:14:20-06:00</updated><id>http://localhost:4000/author-website-gh-pages</id><content type="html" xml:base="http://localhost:4000/author-website-gh-pages.html"><![CDATA[<h2 id="why">Why?</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-08-27T11:19:16-06:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">The Vera Breen - Author</title><subtitle>Artificial Intelligence trends and concepts made easy.</subtitle><author><name>Vera Breen</name></author><entry><title type="html">AI Art and Authorship</title><link href="http://localhost:4000/AI-art.html" rel="alternate" type="text/html" title="AI Art and Authorship" /><published>2023-08-27T00:00:00-06:00</published><updated>2023-08-27T00:00:00-06:00</updated><id>http://localhost:4000/AI-art</id><content type="html" xml:base="http://localhost:4000/AI-art.html"><![CDATA[<h2 id="killing-careers">Killing Careers?</h2>
 
-<h3 id="prerequisites">Prerequisites</h3>
+<p>Let’s look at Sally, a 30 year old artist who creates commissioned character art and book covers for fantasy novelists. As we discuss the ethics around AI art, we’ll keep Sally in mind.</p>
 
-<h2 id="1-github-account">1. Github Account</h2>
+<p>Discussions between authors and Sally have pointed to one opinion - using AI kills careers and snatches creator content without consent. Let’s look at the workflow of AI to talk about why -</p>
+<ol>
+  <li>Tools like Dall-E scrape the internet and take a peek at Sally’s art.</li>
+  <li>Dall-E says “Sure, I can use that style to generate my own versions.”</li>
+  <li>Authors publish AI art for sales. This might include printables for books and social media posts.</li>
+</ol>
 
-<h2 id="2-setting-up-pages">2. Setting Up Pages</h2>
+<p>Sally hates this for several reasons. First, AI puts her out of a job. With AI on the loose, her commissioned art can be replaced by Dall-E’s almost-free generated art. For Sally, AI art is a death sentence. She’s built a niche and following around an industry that’s being replaced with automation.</p>
 
-<h2 id="3-jekyll-installation">3. Jekyll Installation</h2>
+<blockquote>
+  <p>For artists, AI is a death sentence</p>
+</blockquote>
 
-<h2 id="4-find-your-theme">4. Find Your Theme</h2>
+<p>Another detractor – AI is trained by looking at Sally’s work. Sally went to art school and sweated for years to develop a unique art style. In seconds, Dall-E learned and replicated her content. Remember, everything AI does is derivative. AI models are trained by looking at people’s work and making iterations based on prompts. <strong>Dall-E isn’t advancing art in the same way Sally can. Dall-E doesn’t need a paycheck to eat.</strong></p>
 
-<h2 id="5-fill-in-your-pages">5. Fill In Your Pages</h2>]]></content><author><name>Vera Breen</name></author><category term="websites" /><category term="github pages" /><category term="github" /><category term="blog" /><summary type="html"><![CDATA[Custom author websites can rock branding... but how to you set one up for free?]]></summary></entry><entry><title type="html">Who owns the copyright for an AI generated creative work?</title><link href="http://localhost:4000/AI-and-intellectual-property.html" rel="alternate" type="text/html" title="Who owns the copyright for an AI generated creative work?" /><published>2021-04-20T00:00:00-06:00</published><updated>2021-04-20T00:00:00-06:00</updated><id>http://localhost:4000/AI-and-intellectual-property</id><content type="html" xml:base="http://localhost:4000/AI-and-intellectual-property.html"><![CDATA[<p>Recently I was <a href="https://www.rollingstone.com/music/music-features/nirvana-kurt-cobain-ai-song-1146444/">reading an article</a> about a cool project that intends to have a neural network create songs of the late club of the 27 (artists that have tragically died at age 27 or near, and in the height of their respective careers), artists such as Amy Winehouse, Jimmy Hendrix, Curt Cobain and Jim Morrison.</p>
+<h2 id="authors-are-broke">Authors Are Broke</h2>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/tjzOzuKQhSM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+<p>Authors are frustrated too. For indie novelists, AI can create character art and covers that were previously unattainable due to financial constraints. Not all authors can afford to pay Sally. AI tools like Dall-E and Artbreeder open the door to integrated art when you’re broke as a joke.</p>
 
-<p>The project was created by <a href="https://overthebridge.org">Over the Bridge</a>, an organization dedicated to increase awareness on mental health and substance abuse in the music industry, trying to denormalize and remove the glamour around such illnesses within the music community.</p>
+<p>The author and art communities has unanimously agreed that AI art is harmful, but we’ve still seen hundreds of popular art and author accounts post AI generated work. Use at your own risk and be aware that authors with significant traction have been cancelled for AI art.</p>
 
-<p>They are using Google’s <a href="https://magenta.tensorflow.org">Magenta</a>, which is a neural network that precisely was conceived to explore the role of machine learning within the creative process. Magenta has been used to create a brand new “Beatles” song or even there was a band that <a href="https://arstechnica.com/gaming/2019/08/yachts-chain-tripping-is-a-new-landmark-for-ai-music-an-album-that-doesnt-suck/">used it to write a full album</a> in 2019.</p>
+<h2 id="using-public-domain">Using Public Domain</h2>
 
-<p>So, while reading the article, my immediate thought was: who owns the copyright of these new songs?</p>
+<p>“But Vera, I’m really broke.”</p>
 
-<p>Think about it, imagine one of this new songs becomes a massive hit with millions of youtube views and spotify streams, who can claim the royalties generated?</p>
+<p>There are options.</p>
 
-<p>At first it seems quite simple, <em>Over the Bridge</em> should be the ones reaping the benefits, since they are the ones who had the idea, gathered the data and then fed the neural network to get the “work of art”. But in a second thought, didn’t the original artists provide the basis for the work the neural network generated? shouldn’t their state get credit? what about Google whose tool was used, should they get credit too?</p>
+<p>First and foremost, pay artists when you <em>can</em>. As novelists, we’re excited to be paid! Treat artists the same way you want novelists to be treated.</p>
 
-<p>Neural networks have been also used to create poetry, paintings and to write news articles, but how do they do it? A computer program developed for machine learning purposes is an algorithm that “learns” from data to make future decisions. When applied to art, music and literary works, machine learning algorithms are actually learning from some input data to generate a new piece of work, making independent decisions throughout the process to determine what the new work looks like. An important feature of this is that while programmers can set the parameters, the work is actually generated by the neural network itself, in a process akin to the thought processes of humans.</p>
+<p>Get inspired by work in the public domain. Sites like <a href="www.pexels.com">www.pexels.com</a> are a great source for royalty-free art. Take a look at their <a href="https://www.pexels.com/license/">license page</a> for information on how you can use their content.</p>
 
-<p>Now, creative works qualify for copyright protection if they are original, with most definitions of originality requiring a human author. Most jurisdictions, including <a href="https://www.wipo.int/wipolex/en/details.jsp?id=1319">Spain</a> and <a href="https://dejure.org/gesetze/UrhG/7.html">Germany</a>, specifically state that only works created by a human can be protected by <a href="https://www.wipo.int/copyright/en/">copyright</a>. In the United States, for example, <a href="https://copyright.gov/comp3/chap300/ch300-copyrightable-authorship.pdf">the Copyright Office has declared</a> that it will “register an original work of authorship, provided that the work was created by a human being.”</p>
+<p><a href="https://www.nga.gov/open-access-images.html">Open Access</a> images are a wonderful tool. Read through their <a href="https://www.nga.gov/notices/open-access-policy.html">license policy</a> as well.</p>
 
-<p>So as we currently stand, a human author is required to grant a copyright, which makes sense, there is no point of having a neural network be the beneficiary of royalties of a creative work (no bank would open an account for them anyways, lol).</p>
+<p>A hard-mode option is to train as an artist. Many are afraid that their work isn’t good enough, but readers appreciate seeing their favorite characters come to life, even if the art is rough.</p>
 
-<p>I think amendments have to be made to the law to ensure that the person who undertook all the arrangements necessary for the work to be created by the neural network gets the credit but also we need to modify copyright law to ensure the original authors of the body of work used as data input to produce the new piece get their corresponding share of credit. This will get messy if someone uses for example the #1 song of every month in a decade to create the decade song, then there would be as many as 120 different artists to credit.</p>
+<p>Finally, pay for stock images. I got really inspired by <a href="https://www.stocksy.com/IbaiAcevedoo/showcase?page=1">Ibai Acevedoo’s</a> work, and liked that I could pay $15 for photography with a pretty generous standard royalty free license.</p>
 
-<tweet>In a computer generated artistic work, both the person who undertook all the arrangements necessary for its creation as well as the original authors of the data input need to be credited.</tweet>
+<h2 id="disagree-start-a-discussion-on-my-instagram">Disagree? Start a discussion on my Instagram</h2>
 
-<p>There will still be some ambiguity as to who undertook the arrangements necessary, only the one who gathered the data and pressed the button to let the network learn, or does the person who created the neural network’s model also get credit? Shall we go all the way and say that even the programmer of the neural network gets some credit as well?</p>
+<p>https://www.instagram.com/verabreenauthor/</p>]]></content><author><name>Vera Breen</name></author><category term="opinion" /><category term="creativity" /><category term="AI art" /><category term="ethics" /><summary type="html"><![CDATA[AI art makes character art fast. Is it ethical?]]></summary></entry><entry><title type="html">Author Websites with Github Pages</title><link href="http://localhost:4000/author-website-gh-pages.html" rel="alternate" type="text/html" title="Author Websites with Github Pages" /><published>2023-08-24T15:14:20-06:00</published><updated>2023-08-24T15:14:20-06:00</updated><id>http://localhost:4000/author-website-gh-pages</id><content type="html" xml:base="http://localhost:4000/author-website-gh-pages.html"><![CDATA[<h2 id="why">Why?</h2>
 
-<p>There are some countries, in particular the UK where some progress has been made to amend copyright laws to cater for computer generated works of art, but I believe this is one of those fields where technology will surpass our law making capacity and we will live under a grey area for a while, and maybe this is just what we need, by having these works ending up free for use by anyone in the world, perhaps a new model for remunerating creative work can be established, one that does not require commercial success to be necessary for artists to make a living, and thus they can become free to explore their art.</p>
+<p>Do you like this website? It was free! In this guide, I’ll drag you a high-level process for building THIS VERY WEBSITE (wow!) with GitHub Pages. If you don’t have prior coding knowledge, this article might not be enough.</p>
 
-<tweet>Perhaps a new model for remunerating creative work can be established, one that does not require commercial success to be necessary for artists to make a living.</tweet>
+<p>GitHub has great articles on how to complete this process, but I want to document the gotchas I experienced while setting up this bomb-ass site.</p>
 
-<p><img src="./assets/img/posts/20210420/post8-rembrandt2.jpg" alt="The next Rembrandt" />
-<small><a href="https://www.jwt.com/en/work/thenextrembrandt">The Next Rembrandt</a> is a computer-generated 3-D–printed painting developed by a facial-recognition algorithm that scanned data from 346 known paintings by the Dutch painter in a process lasting 18 months. The portrait is based on 168,263 fragments from Rembrandt’s works.</small></p>]]></content><author><name>Armando Maynez</name></author><category term="opinion" /><category term="copyright" /><category term="creativity" /><category term="neural networks" /><category term="machine learning" /><category term="artificial intelligence" /><summary type="html"><![CDATA[As neural networks are used more and more in the creative process, text, images and even music are now created by AI, but who owns the copyright for those works?]]></summary></entry><entry><title type="html">So, what is a neural network?</title><link href="http://localhost:4000/back-to-basics.html" rel="alternate" type="text/html" title="So, what is a neural network?" /><published>2021-04-02T00:00:00-06:00</published><updated>2021-04-02T00:00:00-06:00</updated><id>http://localhost:4000/back-to-basics</id><content type="html" xml:base="http://localhost:4000/back-to-basics.html"><![CDATA[<p>The omnipresence of technology nowadays has made it commonplace to read news about AI, just a quick glance at today’s headlines, and I get:</p>
+<blockquote>
+  <p>P.S. GitHub can do other cool things for authors too. <a href="https://www.gitkraken.com/gitkon/git-for-writers">Here’s one author’s experience with git</a>.</p>
+</blockquote>
+
+<h3 id="nice-to-haves">Nice-To-Haves</h3>
+
 <ul>
-  <li><a href="https://www.morningbrew.com/emerging-tech/stories/2021/03/29/one-biggest-advancements-ai-also-sparked-fierce-debate-heres?utm_source=morning_brew">This Powerful AI Technique Led to Clashes at Google and Fierce Debate in Tech.</a></li>
-  <li><a href="https://fortune.com/2021/04/02/ai-forecasting-supply-chain-factories-caterpillar-agco/">How A.I.-powered companies dodged the worst damage from COVID</a></li>
-  <li><a href="https://www.mobihealthnews.com/news/emea/ai-technology-detects-ticking-time-bomb-arteries">AI technology detects ‘ticking time bomb’ arteries</a></li>
-  <li><a href="https://www.genengnews.com/insights/ai-in-drug-discovery-starts-to-live-up-to-the-hype/">AI in Drug Discovery Starts to Live Up to the Hype</a></li>
-  <li><a href="https://www.c4isrnet.com/artificial-intelligence/2021/04/02/pentagon-seeks-commercial-solutions-to-get-its-data-ready-for-ai/">Pentagon seeks commercial solutions to get its data ready for AI</a></li>
+  <li>Prior coding knowledge or the time to learn</li>
+  <li>Command line knowledge</li>
 </ul>
 
-<p>Topics from business, manufacturing, supply chain, medicine and biotech and even defense are covered in those news headlines, definitively the advancements on the fields of artificial intelligence, in particular machine learning and deep neural networks have permeated into our daily lives and are here to stay. But, do the general population know what are we talking about when we say “an AI”?  I assume most people correctly imagine a computer algorithm or perhaps the more adventurous minds think of a physical machine, an advanced computer entity or even a robot, getting smarter by itself with every use-case we throw at it. And most people will be right, when “an AI” is mentioned it is indeed an algorithm run by a computer, and there is where the boundary of their knowledge lies.</p>
+<h2 id="1-github">1. Github</h2>
 
-<p>They say that the best way to learn something is to try to explain it, so in a personal exercise I will try to do an ELI5 (<strong>E</strong>xplain it <strong>L</strong>ike <strong>I</strong> am <strong>5</strong>) version of what is a neural network.</p>
+<p>Match your author name to your <a href="www.github.com">GitHub</a> account username. I (Vera Breen) might pick <code class="language-plaintext highlighter-rouge">verabreen</code> as my GitHub account name.</p>
 
-<p>Let’s start with a little history, humans have been tinkering with the idea of an intelligent machine for a while now, some even say that the idea of artificial intelligence was conceived by the ancient greeks (<a href="https://www.thinkautomation.com/bots-and-ai/a-history-of-automation-the-rise-of-robots-and-ai/">source</a>), and several attempts at devising “intelligent” machines have been made through history, a notable one was ‘The Analytical Engine’ created by Charles Babbage in 1837:</p>
+<p>If you’re new to git, consider using a tool like <a href="https://www.gitkraken.com/">Git Kraken</a> to organize your project.</p>
 
-<p><img src="./assets/img/posts/20210402/post7-analytical-engine.jpg" alt="The Analytical Engine" />
-<small>The Analytical Engine of Charles Babbage - 1837</small></p>
+<h3 id="make-the-project">Make the Project</h3>
 
-<p>Then, in the middle of last century by trying to create a model of how our brain works, Neural Networks were born. Around that time, Frank Rosenblatt at Cornell trying to understand the simple decision system present in the eye of a common housefly,  proposed the idea of a <a href="./single-neuron-perceptron.html">perceptron</a>, a very simple system that processes certain inputs with basic math operations and produces an output.</p>
+<p>Pick where your code will live. Each website will live in it’s own project (works like a computer folder). To create a new project, follow <a href="https://docs.github.com/en/pages/quickstart#creating-your-website">this guide</a>.</p>
 
-<p><img src="./assets/img/posts/20210125/Perceptron.png" alt="A perceptron" /></p>
+<p>Complete “Creating Your Website”, skip the last section “Change Title and Description.” We’ll deal with the title later.</p>
 
-<p>To illustrate, let’s say that the brain of the housefly is a perceptron, its inputs are whatever values are produced by the multiple cells in its eyes, when the eye cell detects “something” it’s output will be a 1, and if there is nothing a 0. Then the combination of all those inputs can be processed by the perceptron (the fly brain), and the output is a simple 0 or 1 value. If it is a 1 then the brain is telling the fly to flee and if it is a 0 it means it is safe to stay where it is.</p>
-
-<p><img src="./assets/img/posts/20210402/post7-housefly-eye.jpg" alt="A housefly eye" /></p>
-
-<p>We can imagine then that if many of the eye cells of the fly produce 1s, it means that an object is quite near, and therefore the perceptron will calculate a 1, it is time to flee.</p>
-
-<p><img src="./assets/img/posts/20210402/post7-fly-vision.jpg" alt="The fly vision" /></p>
-
-<p>The perceptron is just a math operation, one that multiplies certain input values with preset “parameters” (called weights) and adds up the resulting multiplications to generate a value.</p>
-
-<p>Then the magic spark was ignited, the parameters (weights) of the perceptron could be “learnt” by a process of minimizing the difference between known results of particular observations, and what the perceptron is actually calculating. It is this process of learning what we call <strong>training the neural network</strong>.</p>
-
-<tweet>This idea is so powerful that even today it is one of the fundamental building blocks of what we call AI.</tweet>
-
-<p>From this I will try to explain how this simple concept can have such diverse applications as natural language processing (think Alexa), image recognition like medical diagnosis from a CTR scan, autonomous vehicles, etc.</p>
-
-<p>A basic neural network is a combination of perceptrons in different arrangements, the perceptron therefore was downgraded from “fly brain” to “network neuron”.
-<img src="./assets/img/posts/20210402/post7-multilayer-perceptron.png" alt="A multilayer perceptron" /></p>
-
-<p>A neural network has different components, in its basic form it has:</p>
+<p>SO IMPORTANT!! This sets your default website URL, so use your author name! For me, that might be -</p>
 <ul>
-  <li>Input</li>
-  <li>Hidden layers</li>
-  <li>Output</li>
+  <li><code class="language-plaintext highlighter-rouge">verabreen.github.io</code></li>
+  <li><code class="language-plaintext highlighter-rouge">authorverabreen.github.io</code></li>
+  <li><code class="language-plaintext highlighter-rouge">vmbreen.github.io</code></li>
 </ul>
 
-<p><img src="./assets/img/posts/20210228/nnet_flow.gif" alt="Neural network components" /></p>
+<p>GitHub will give you these domain names for free, as long as they end in <code class="language-plaintext highlighter-rouge">github.io</code>.</p>
 
-<h3 id="input">Input</h3>
+<p>Your live website will live at <code class="language-plaintext highlighter-rouge">www.yourname.github.io</code>. It won’t work quite yet, though.</p>
 
-<p>The inputs of a neural network are in their essence just numbers, therefore anything that can be converted to a number can become an input. Letters in a text, pixels in an image, frequencies in a sound wave, values from a sensor, etc. are all different things that when converted to a numerical value serve as inputs for the neural network. This is one of the reasons why applications of neural networks are so diverse.</p>
+<p>This is where I might have lied to you. To get the <em>optional</em> cute URL <code class="language-plaintext highlighter-rouge">www.yourname.com</code>, have to pay a yearly domain fee (usually $12) for the name. I buy mine from Google Domains. <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site">Setting up custom domain names can be found here</a></p>
 
-<p>Inputs can be as many as one need for the task at hand, from maybe 9 inputs to teach a neural network how to play tic-tac-toe to thousands of pixels from a camera for an autonomous vehicle. Since the input of a perceptron needs to be a single value, if for example a color pixel is chosen as input, it most likely will be broken into three different values; its  red, green and blue components, hence each pixel will become 3 different inputs for the neural network.</p>
+<h3 id="install-tools">Install Tools</h3>
 
-<h3 id="hidden-layers">Hidden layers</h3>
+<p>Install the following tools to create your website -</p>
+<ul>
+  <li><strong>Jekyll</strong> builds your website! <a href="https://jekyllrb.com/docs/installation/">Here are the instructions.</a></li>
+  <li><strong>Visual Studio Code</strong>. You may use Scrivener, Word, or Google Docs to write your novels. Visual Studio Code (VS Code) is a similar tool for developers. If it looks scary, remember it’s just a fancy Microsoft Word. Download and install that <a href="https://code.visualstudio.com/download">Here is the download.</a>.</li>
+</ul>
 
-<p>A “layer” within a neural network is just a group of perceptrons that all perform the same exact mathematical operation to the inputs and produce an output. The catch is that each of them have different weights (parameters), therefore their output for a given input will be different amongst them. There are many types of layers, the most typical of them being a “dense” layer, which is another word to say that all the inputs are connected to all the neurons (individual perceptrons), and as said before, each of these connections have a weight associated with it, so that the operation that each neuron performs is a simple weighted sum of all the inputs.</p>
+<h3 id="bring-the-project-to-your-computer">Bring the Project to Your Computer</h3>
 
-<p><img src="./assets/img/posts/20210402/post7-dense-layers.png" alt="post7-dense-layers" /></p>
+<p>Let’s bring the project to your computer.</p>
 
-<p>The hidden layer is then typically connected to another dense layer, and their connection means that each output of a neuron from the first layer is treated effectively as an input for the subsequent one, and it is thus connected to every neuron.</p>
+<p>The workflow will be -</p>
+<ul>
+  <li>Write content on your computer and test it</li>
+  <li>Send it to GitHub</li>
+  <li>Launch the website</li>
+</ul>
 
-<p>A neural network can have from one to as many layers as one can think, and the number of layers depends solely on the experience we have gathered on the particular problem we would like to solve.</p>
+<blockquote>
+  <p>If this is brand new, find a coder friend and have them work alongside you.</p>
+</blockquote>
 
-<p>Another critical parameter of a hidden layer is the number of neurons it has, and again, we need to rely on experience to determine how many neurons are needed for a given problem. I have seen networks that vary from a couple of neurons to the thousands. And of course each hidden layer can have as many neurons as we please, so the number of combinations is vast.</p>
+<h4 id="git-clone">Git Clone</h4>
 
-<p>To the number of layers, their type and how many neurons each have, is what we call the <em>network topology</em> (including the number of inputs and outputs).</p>
+<p>Use your terminal to <code class="language-plaintext highlighter-rouge">git clone</code> your repository. This brings the code to your computer to work on (like downloading an email attachment to open on your computer). <a href="https://youtu.be/8JJ101D3knE?si=kK52Btu97jP030ZT">Here</a> is a great video on using git.</p>
 
-<h3 id="output">Output</h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8JJ101D3knE?si=gaChcmFbR_ee-c9u" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
 
-<p>At the very end of the chain, another layer lies (which behaves just like a hidden layer), but has the peculiarity that it is the final layer, and therefore whatever it calculates will be the output values of the whole network. The number of outputs the network has is a function of the problem we would like to solve. It could be as simple as one output, with its value representing a probability of an action (like in the case of the flee reaction of the housefly), to many outputs, perhaps if our network is trying to distinguish images of animals, one would have an output for each animal species, and the output would represent how much confidence the network has that the particular image belongs to the corresponding species.</p>
+<h4 id="changes-in-vs-code">Changes in VS Code</h4>
 
-<p>As we said, the neural network is just a collection of individual neurons, doing basic math operations on certain inputs in series of layers that eventually generate an output. This mesh of neurons is then “trained” on certain output values from known cases of the inputs; once it has learned it can then process new inputs, values that it has never seen before with surprisingly accurate results.</p>
+<p>Open the entire folder in VS Code. Consider downloading a Jekyll project plugin! You will be making changes in the <code class="language-plaintext highlighter-rouge">posts/</code> folder (we’ll learn how later).</p>
 
-<p>Many of the problems neural networks solve, could be certainly worked out by other algorithms, however, since neural networks are in their core very basic operations, once trained, they are extremely efficient, hence much quicker and economical to produce results.</p>
+<h4 id="jekyll-serve">Jekyll Serve</h4>
 
-<p>There are a few more details on how a simple neural network operate that I purposedly left out to make this explanation as simple as possible. Thinks like biases, the activation functions and the math behind learning, the backpropagation algorithm, I will leave to a more in depth article. I will also write (perhaps in a series) about the more complex topologies combining different types of layers and other building blocks, a part from the perceptron.</p>
+<p>Before making changes, test your installation with Jekyll. I chose to add the starter site first. Inside of your project folder, follow the instructions <a href="https://jekyllrb.com/docs/">here</a>.</p>
 
-<p><img src="./assets/img/posts/20210402/post7-alexa.png" alt="Alexa recognizing speach" /></p>
+<p>Some tips -</p>
+<ul>
+  <li>Reload the webpage (<code class="language-plaintext highlighter-rouge">localhost:4000</code>) after you make changes</li>
+  <li>If your changes aren’t showing, restart the <code class="language-plaintext highlighter-rouge">jekyll serve</code> command</li>
+</ul>
 
-<p>Things like “Alexa”, are a bit more complex, but work on exactly the same principles. Let’s break down for example the case of asking “Alexa” to play a song in spotify. Alexa uses several different neural networks to acomplish this:</p>
+<h4 id="git-commit--push">Git Commit + Push</h4>
 
-<h4 id="1-speech-recognition">1. Speech recognition</h4>
+<p>Use git commands to <code class="language-plaintext highlighter-rouge">git add</code>, <code class="language-plaintext highlighter-rouge">git commit</code> and <code class="language-plaintext highlighter-rouge">git push</code>. <em>Your website won’t launch until you do this</em>. Go to the URL you chose above, such as www.yourprojectname.github.io, and double-check that your website is present.</p>
 
-<p>As a basic input we have our speech: the command <strong>“Alexa, play Van Halen”</strong>. This might seem quite simple for us humans to process, but for a machine is an incredible difficult feat to be able to understand speech, things like each individual voice timbre, entonation, intention and many more nuances of human spoken language make it so that traditional algorithms have struggled a lot with this. In our simplified example let’s say that we use a neural network to transform our spoken speech into text characters a computer is much more familiarized to learn.</p>
+<h4 id="optional-pick-branch-strategy">Optional: Pick Branch Strategy</h4>
 
-<h4 id="2-understanding-what-we-mean-natural-language-understanding">2. Understanding what we mean (Natural Language Understanding)</h4>
+<p>Some authors want to make a “work in progress” branch where they can save undeployed changes. This allows authors to commit and push changes without them going live on the website.</p>
 
-<p>Once the previous network managed to succesfuly convert our spoken words into text, there comes the even more difficult task of making sense of what we said. Things that we humans take for granted such as context, intonation and non verbal communication, help give our words meaning in a very subtle, but powerful way, a machine will have to do with much less information to correctly understand what we mean. It has to correctly identify the intention of our sentence and the subject or entities of what we mean.</p>
+<p>I live by the YOLO principle and make changes directly on <code class="language-plaintext highlighter-rouge">main</code> because I am fastidious about checking my changes on my computer first.</p>
 
-<p><img src="./assets/img/posts/20210402/post7-alexa-natural-lang.png" alt="post7-alexa-natural-lang" /></p>
+<h2 id="creating-content">Creating Content</h2>
 
-<p>The neural network has to identify that it received a command (by identifying its name), the command (“play music”), and our choice (“Van Halen”). And it does so by means of simple math operations as described before. Of course the network involved is quite complex and has different types of neurons and connection types, but the underlying principles remain.</p>
+<p>Now you want to add things to your website. By default, you can add markdown pages in the <code class="language-plaintext highlighter-rouge">_posts</code> folder, git commit them, and have your website. Figure out how to add a post now. Some tips -</p>
+<ul>
+  <li>Copy and paste an existing post page. There should be one called “_posts/2023-08-26-welcome-to-jekyll.markdown”.</li>
+  <li>The post above tells you exactly what needs to go in a post.</li>
+  <li>Play around with markdown files. <a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax">You can add links, images, and formatting</a>.</li>
+</ul>
 
-<h4 id="3-replying-to-us">3. Replying to us</h4>
+<p>The banner pictures live in <code class="language-plaintext highlighter-rouge">assets/img/posts</code> in a folder with the date. Make sure your resolution is high enough (over 1500 pixels).</p>
 
-<p>Once Alexa understood what we meant, it then proceeds to execute the action of the command it interpreted and it replies to us in turn using natural language. This is accomplished using a technique called speech synthesis, things like pitch, duration and intensity of the words and phonems are selected based on the “meaning” of what Alexa will respond to us: “Playing songs by Van Halen on Spotify” sounding quite naturally. And all is accomplished with neural networks executing many simple math operations.</p>
+<p>After this, the themeing is purely aesthetic.</p>
 
-<p><img src="./assets/img/posts/20210402/post7-alexa-steps.png" alt="post7-alexa-steps" />
-<small>Although it seems quite complex, the process for AI to understand us can be boiled down to simple math operations</small></p>
+<h3 id="picking-themes">Picking Themes</h3>
 
-<p>Of course Amazon’s Alexa neural networks have undergone quite a lot of training to get to the level where they are, the beauty is that once trained, to perform their magic they just need a few mathematical operations.</p>
+<p><a href="https://www.bestjekyllthemes.com/theme/the-mvm-the-mvm.github.io/">I used this one</a>. There are excellent instructions in his README to install.</p>
 
-<p>As said before, I will continue to write about the basics of neural networks, the next article in the series will dive a bit deeper into the math behind a basic neural network.</p>]]></content><author><name>Armando Maynez</name></author><category term="theory" /><category term="neural networks" /><category term="machine learning" /><category term="artificial intelligence" /><summary type="html"><![CDATA[ELI5: what is a neural network.]]></summary></entry><entry><title type="html">Starting the adventure</title><link href="http://localhost:4000/starting-the-adventure.html" rel="alternate" type="text/html" title="Starting the adventure" /><published>2021-03-24T00:00:00-06:00</published><updated>2021-03-24T00:00:00-06:00</updated><id>http://localhost:4000/starting-the-adventure</id><content type="html" xml:base="http://localhost:4000/starting-the-adventure.html"><![CDATA[<p>In the midst of a global pandemic caused by the SARS-COV2 coronavirus; I decided to start blogging. I wanted to blog since a long time, I have always enjoyed writing, but many unknowns and having “no time” for it prevented me from taking it up. Things like: “I don’t really know who my target audience is”, “what would my topic or topics be?”, “I don’t think I am a world-class expert in anything”, and many more kept stopping me from setting up my own blog. Now seemed like a good time as any so with those and tons of other questions in my mind I decided it was time to start.</p>
+<p><strong>I wanted to make HTML and CSS changes</strong>, so I went the route of downloading the project manually and copy-pasting into my project folder. To do this -</p>
+<ul>
+  <li>Erase everything that already exists in the folder except your <code class="language-plaintext highlighter-rouge">.git</code> files.</li>
+  <li>Paste. Make sure to exclude their <code class="language-plaintext highlighter-rouge">.git</code> files.</li>
+</ul>
+
+<blockquote>
+  <p>Tip! Some folders (like <code class="language-plaintext highlighter-rouge">_site/</code>) are built every time you restart the server. Make sure to make changes in the top-level <code class="language-plaintext highlighter-rouge">assets/</code>, <code class="language-plaintext highlighter-rouge">_layout</code>, and <code class="language-plaintext highlighter-rouge">_include</code> folders if you’re getting wild with code changes.</p>
+</blockquote>
+
+<h2 id="deployment-and-beyond">Deployment and Beyond</h2>
+
+<p>Making changes to <code class="language-plaintext highlighter-rouge">_config.yml</code> is the last step to build your Jekyll project. For the theme above, I had to -</p>
+<ul>
+  <li>Change the site settings at the top of the file</li>
+  <li>Adjust the author settings</li>
+  <li>Adjust the social media settings. These get tagged in every author element (an example is the author page and post pages toward the bottom)</li>
+</ul>
+
+<p>If you need help, we can set up a one-on-one consult session, or you can check the newsletter for upcoming group classes.</p>
+
+<p>Enjoy!</p>]]></content><author><name>Vera Breen</name></author><category term="websites" /><category term="github pages" /><category term="github" /><category term="blog" /><category term="DIY hard" /><summary type="html"><![CDATA[Custom author websites can rock branding... but how to you set one up for free?]]></summary></entry><entry><title type="html">Pleasure and Picking Titles</title><link href="http://localhost:4000/picking-titles.html" rel="alternate" type="text/html" title="Pleasure and Picking Titles" /><published>2023-08-01T00:00:00-06:00</published><updated>2023-08-01T00:00:00-06:00</updated><id>http://localhost:4000/picking-titles</id><content type="html" xml:base="http://localhost:4000/picking-titles.html"><![CDATA[<h2 id="cover-and-titles">Cover and Titles</h2>
+
+<p>I stumbled across <a href="https://www.thecreativepenn.com/2018/10/08/doubling-down-on-what-you-love-and-opportunities-when-publishing-wide-my-ninc-2018-round-up/">this creative penn article</a> when researching how and what to title my book. I’m scared! I have two shots to capture readership.</p>
+<ol>
+  <li>Have a bomb.com title</li>
+  <li>Pick a great cover</li>
+</ol>
+
+<p>I chose my cover art, but as you can see, <em>mmmm has sex with ff in a basement</em> is a lacking title.</p>
+
+<center><img src="./assets/img/posts/20230801/ebookcover.png" width="540" /></center>
+<p><br /></p>
+
+<h2 id="titling-for-the-id">Titling for the Id</h2>
+
+<p>The article above states that titling for the id – the things that scream “pleasure” – communicates to the reader that the book will contain something juicy that they’ll love.</p>
+
+<p>Here’s the list of pleasures contained in my novel -</p>
+<ul>
+  <li>Reverse harems (<em>sigh</em>, I’ll never get over them) and found family</li>
+  <li>Every mm and ff spicy combination with my 4 male and 2 female protagonists</li>
+  <li>mlm and wlw</li>
+  <li>Fucking your best friend</li>
+  <li>Dangerous men with tattoos</li>
+  <li>Twisted power dynamics</li>
+  <li>A twinkle of exhibitionism and BDSM</li>
+  <li>Scandalous ballgowns</li>
+</ul>
+
+<p>I briefly considered throwing my latin-inspired setting name (Domus Aeterna) into the title, but was quickly scolded. It’s not readable and it doesn’t convey that are there 6 people fucking each other and finding love in a dangerous temple.</p>
+
+<h2 id="titles-in-my-genre">Titles in my Genre</h2>
+
+<p>My omg-so-amazing mentor <a href="http://www.jeannielin.com/">Jeannie Lin</a> told me to go list some book titles in my genre. See what’s selling!</p>
+
+<p><em>Queen Takes Knights</em> by Joely Sue Burkhart. I think this is the winner of “reverse harem titles with bomb covers.” I snatched these books up in an instant and knew exactly what I was getting into. The title definitely embodies the concept of powerful women (queen), sex (takes), and that reverse harem (knights, plural). Also, let’s take a moment to gush over that cover art. I love the chess reference (intrigue).</p>
+
+<iframe type="text/html" sandbox="allow-scripts allow-same-origin allow-popups" width="336" height="550" frameborder="0" allowfullscreen="" style="max-width:100%" src="https://read.amazon.com/kp/card?asin=B076JFJ8ZF&amp;preview=inline&amp;linkCode=kpe&amp;ref_=cm_sw_r_kb_dp_BXAAJ01797XPC12812GM"></iframe>
+
+<p><em>Sex Wizards</em> by Alethea Faust. Love this! The series title doesn’t fuck around. It gets straight to the point.</p>
+
+<iframe type="text/html" sandbox="allow-scripts allow-same-origin allow-popups" width="336" height="550" frameborder="0" allowfullscreen="" style="max-width:100%" src="https://read.amazon.com/kp/card?asin=B09J98KB99&amp;preview=inline&amp;linkCode=kpe&amp;ref_=cm_sw_r_kb_dp_Z8623A6N8334SYZ2X5VB"></iframe>
+
+<p><em>Helfyre</em> by Mariel Pomeroy. Hel- (There will be dangerous demons within), -fyre (Burning tension? Romance? I love it all)</p>
+
+<iframe type="text/html" sandbox="allow-scripts allow-same-origin allow-popups" width="336" height="550" frameborder="0" allowfullscreen="" style="max-width:100%" src="https://read.amazon.com/kp/card?asin=B09QT71SFD&amp;preview=inline&amp;linkCode=kpe&amp;ref_=cm_sw_r_kb_dp_MRVM7RKZ951RXR6YRXS1"></iframe>
+
+<p>While doing this exercise, I also noticed reverse harem books in by TBR that I had to dig for. Without clear titles, they got chucked onto the “rh” shelf with a guess in Goodreads.</p>]]></content><author><name>Vera Breen</name></author><category term="storycraft" /><category term="titles" /><category term="id" /><category term="pleasure" /><summary type="html"><![CDATA[Walking through my title-picking process.]]></summary></entry><entry><title type="html">Below Domus Aetera</title><link href="http://localhost:4000/bda.html" rel="alternate" type="text/html" title="Below Domus Aetera" /><published>2021-08-27T13:32:20-06:00</published><updated>2021-08-27T13:32:20-06:00</updated><id>http://localhost:4000/bda</id><content type="html" xml:base="http://localhost:4000/bda.html"><![CDATA[<h2 id="release-date---december-2023">Release Date - December 2023</h2>
+
+<p>Preorder here</p>
+
+<p><a data-pin-do="embedBoard" data-pin-board-width="800" data-pin-scale-height="640" data-pin-scale-width="120" href="https://www.pinterest.com/verabreenauthor/cesa-and-yassina/"></a></p>]]></content><author><name>Vera Breen</name></author><category term="book releases" /><category term="bda" /><summary type="html"><![CDATA[Book notes for BDA]]></summary></entry><entry><title type="html">Starting the adventure</title><link href="http://localhost:4000/starting-the-adventure.html" rel="alternate" type="text/html" title="Starting the adventure" /><published>2021-03-24T00:00:00-06:00</published><updated>2021-03-24T00:00:00-06:00</updated><id>http://localhost:4000/starting-the-adventure</id><content type="html" xml:base="http://localhost:4000/starting-the-adventure.html"><![CDATA[<p>In the midst of a global pandemic caused by the SARS-COV2 coronavirus; I decided to start blogging. I wanted to blog since a long time, I have always enjoyed writing, but many unknowns and having “no time” for it prevented me from taking it up. Things like: “I don’t really know who my target audience is”, “what would my topic or topics be?”, “I don’t think I am a world-class expert in anything”, and many more kept stopping me from setting up my own blog. Now seemed like a good time as any so with those and tons of other questions in my mind I decided it was time to start.</p>
 
 <p>Funnily, this is not my first post. The birth of the blog came very natural as a way to “document” my newly established pursuit for getting myself into Machine Learning. This new adventure of mine comprises several things, and if I want to succeed I need to be serious about them all:</p>
 <ul>
@@ -7808,74 +7887,7 @@ qXRvbwAAAB1kYXRhAAAAAQAAAABMYXZmNTguNDUuMTAw
   <li>save and load trained model to file</li>
 </ul>
 
-<p>I will get to it soon…</p>]]></content><author><name>Armando Maynez</name></author><category term="machine learning" /><category term="coding" /><category term="neural networks" /><category term="python" /><summary type="html"><![CDATA[Single neuron perceptron that classifies elements learning quite quickly.]]></summary></entry><entry><title type="html">Conway’s Game of Life</title><link href="http://localhost:4000/conways-game-of-life.html" rel="alternate" type="text/html" title="Conway’s Game of Life" /><published>2021-02-10T12:32:20-07:00</published><updated>2021-02-10T12:32:20-07:00</updated><id>http://localhost:4000/conways-game-of-life</id><content type="html" xml:base="http://localhost:4000/conways-game-of-life.html"><![CDATA[<p>I&nbsp;am lately trying to take on coding again. It had always been a part of my life since my early years when I&nbsp;learned to program a Tandy Color Computer at the age of 8, the good old days.</p>
-
-<p><img src="./assets/img/posts/20210210/300px-TRS-80_Color_Computer_3.jpg" alt="Tandy Color Computer TRS80 III" /><small>Tandy Color Computer TRS80 III</small></p>
-
-<p>Having already programed in Java, C# and of course BASIC, I&nbsp;thought it would be a great idea to learn Python since I&nbsp;have great interest in data science and machine learning, and those two topics seem to have an avid community within Python coders.</p>
-
-<p>For one of my starter quick programming tasks, I&nbsp;decided to code Conway's Game of Life, a very simple cellular automata that basically plays itself.</p>
-
-<p>The game consists of a grid of n size, and within each block of the grid a cell could either be dead or alive according to these rules:</p>
-
-<ul><li>If a cell has less than 2 neighbors, meaning contiguous alive cells, the cell will die of loneliness</li><li>If a cell has more than 3 neighbors, it will die of overpopulation</li><li>If an empty block has exactly 3 contiguous alive neighbors, a new cell will be born in that spot</li><li>If an alive cell has 2 or 3 alive neighbors, it continues to live</li></ul>
-
-<p><img src="./assets/img/posts/20210210/GameOfLife.gif" alt="Conway's rules for the Game of Life" /><small>Conway’s rules for the Game of Life</small></p>
-
-<p>To make it more of a challenge I&nbsp;also decided to implement an <em>"sparse" </em>method of recording the game board, this means that instead of the typical 2d array representing the whole board, I&nbsp;will only record the cells which are alive. Saving a lot of memory space and processing time, while adding some spice to the challenge.</p>
-
-<p>The trickiest part was figuring out how to calculate which empty blocks had exactly 3 alive neighbors so that a new cell will spring to life there, this is trivial in the case of recording the whole grid, because we just iterate all over the board and find the alive neighbors of ALL&nbsp;the blocks in the grid, but in the case of only keeping the alive cells proved quite a challenge.</p>
-
-<p>In the end the algorithm ended up as follows:</p>
-
-<ol><li>Iterate through all the alive cells and get all of their neighbors</li></ol>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">get_neighbors</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">cell</span><span class="p">):</span>
-    <span class="n">neighbors</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
-                <span class="nf">if </span><span class="p">(</span><span class="mi">0</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">=</span> <span class="p">(</span><span class="n">cell</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">size_x</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">=</span> <span class="p">(</span><span class="n">cell</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">size_y</span><span class="p">):</span>
-                    <span class="n">neighbors</span><span class="p">.</span><span class="nf">append</span><span class="p">((</span><span class="n">cell</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span><span class="p">,</span> <span class="n">cell</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">y</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">neighbors</span>
-</code></pre></div></div>
-
-<ol start="2"><li>Mark all the neighboring blocks as having +1 neighbor each time a particular cell is encountered. This way, for each neighboring alive cell the counter of the particular block will increase, and in the end it will contain the total number of live cells which are contiguous to it.</li></ol>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">next_state</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
-    <span class="n">alive_neighbors</span> <span class="o">=</span> <span class="p">{}</span>
-
-    <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">self</span><span class="p">.</span><span class="n">alive_cells</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">cell</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">alive_neighbors</span><span class="p">:</span>
-            <span class="n">alive_neighbors</span><span class="p">[</span><span class="n">cell</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-
-        <span class="n">neighbors</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">get_neighbors</span><span class="p">(</span><span class="n">cell</span><span class="p">)</span>
-
-        <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="n">neighbors</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">neighbor</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">alive_neighbors</span><span class="p">:</span>
-                <span class="n">alive_neighbors</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">alive_neighbors</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
-</code></pre></div></div>
-
-<p>The trick was using a dictionary to keep the record of the blocks that have alive neighbors and the cells who are alive in the current state but have zero alive neighbors (thus will die).</p>
-
-<p>With the dictionary it became easy just to add cells and increase their neighbor counter each time it was encountered as a neighbor of an alive cell.</p>
-
-<p>Having the dictionary now filled with all the cells that have alive neighbors and how many they have, it was just a matter of applying the rules of the game:</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">alive_neighbors</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">alive_neighbors</span><span class="p">[</span><span class="n">cell</span><span class="p">]</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">alive_neighbors</span><span class="p">[</span><span class="n">cell</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">alive_cells</span><span class="p">.</span><span class="nf">discard</span><span class="p">(</span><span class="n">cell</span><span class="p">)</span>
-    
-    <span class="k">elif</span> <span class="n">alive_neighbors</span><span class="p">[</span><span class="n">cell</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">alive_cells</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="n">cell</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>Notice that since I am keeping an array of the coordinates of only the cells who are alive, I could apply just 3 rules, die of loneliness, die of overpopulation and become alive from reproduction (exactly 3 alive neighbors) because the ones who have 2 or 3 neighbors and are already alive, can remain alive in the next iteration.</p>
-
-<p>I&nbsp;found it very interesting to implement the Game of Life like this, it was quite a refreshing challenge and I am beginning to feel my coding skills ramping up again.</p>]]></content><author><name>Armando Maynez</name></author><category term="coding" /><category term="python" /><summary type="html"><![CDATA[Taking on the challenge of picking up coding again through interesting small projects, this time it is the turn of Conway's Game of Life.]]></summary></entry><entry><title type="html">Single Neuron Perceptron</title><link href="http://localhost:4000/single-neuron-perceptron.html" rel="alternate" type="text/html" title="Single Neuron Perceptron" /><published>2021-01-25T12:32:20-07:00</published><updated>2021-01-25T12:32:20-07:00</updated><id>http://localhost:4000/single-neuron-perceptron</id><content type="html" xml:base="http://localhost:4000/single-neuron-perceptron.html"><![CDATA[<p>As an entry point to learning python and getting into Machine Learning, I decided to code from scratch the Hello World! of the field, a single neuron perceptron.</p>
+<p>I will get to it soon…</p>]]></content><author><name>Armando Maynez</name></author><category term="machine learning" /><category term="coding" /><category term="neural networks" /><category term="python" /><summary type="html"><![CDATA[Single neuron perceptron that classifies elements learning quite quickly.]]></summary></entry><entry><title type="html">Single Neuron Perceptron</title><link href="http://localhost:4000/single-neuron-perceptron.html" rel="alternate" type="text/html" title="Single Neuron Perceptron" /><published>2021-01-25T12:32:20-07:00</published><updated>2021-01-25T12:32:20-07:00</updated><id>http://localhost:4000/single-neuron-perceptron</id><content type="html" xml:base="http://localhost:4000/single-neuron-perceptron.html"><![CDATA[<p>As an entry point to learning python and getting into Machine Learning, I decided to code from scratch the Hello World! of the field, a single neuron perceptron.</p>
 
 <h2 id="what-is-a-perceptron">What is a perceptron?</h2>
 
