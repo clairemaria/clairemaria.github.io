@@ -17,6 +17,16 @@
     
       
   {
+  "tag" : "blog",
+  "posts" : [
+      
+      "./author-website-gh-pages.html"
+      
+    ]
+  } ,
+    
+      
+  {
   "tag" : "coding",
   "posts" : [
       
@@ -87,6 +97,26 @@
   "posts" : [
       
       "./starting-the-adventure.html"
+      
+    ]
+  } ,
+    
+      
+  {
+  "tag" : "github",
+  "posts" : [
+      
+      "./author-website-gh-pages.html"
+      
+    ]
+  } ,
+    
+      
+  {
+  "tag" : "github pages",
+  "posts" : [
+      
+      "./author-website-gh-pages.html"
       
     ]
   } ,
@@ -173,6 +203,16 @@
   "posts" : [
       
       "./starting-the-adventure.html"
+      
+    ]
+  } ,
+    
+      
+  {
+  "tag" : "websites",
+  "posts" : [
+      
+      "./author-website-gh-pages.html"
       
     ]
   } 

@@ -1,6 +1,16 @@
 [
   
     {
+      "title"       : "Author Websites with Github Pages",
+      "category"    : "",
+      "tags"        : "websites, github pages, github, blog",
+      "url"         : "./author-website-gh-pages.html",
+      "date"        : "2023-08-24 15:14:20 -0600",
+      "description" : "Custom author websites can rock branding... but how to you set one up for free?",
+      "content"     : "Why?Prerequisites1. Github Account2. Setting Up Pages3. Jekyll Installation4. Find Your Theme5. Fill In Your Pages"
+    } ,
+  
+    {
       "title"       : "Who owns the copyright for an AI generated creative work?",
       "category"    : "opinion",
       "tags"        : "copyright, creativity, neural networks, machine learning, artificial intelligence",
