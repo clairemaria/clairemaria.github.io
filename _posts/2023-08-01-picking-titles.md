@@ -5,8 +5,7 @@ show_date: true
 title: "Pleasure and Picking Titles"
 date: 2023-08-01
 img: posts/20230801/book.jpg
-tags: [titles, id, pleasure]
-category: storycraft
+tags: [titles]
 author: Vera Breen
 description: "Walking through my title-picking process."
 ---

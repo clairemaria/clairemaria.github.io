@@ -420,6 +420,10 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--accent-dark);
 }
 
+.homepage-title {
+  text-align: center;
+}
+
 h1 {
   font-size: 4rem;
   font-weight: var(--font2-regular);

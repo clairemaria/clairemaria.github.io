@@ -3,7 +3,7 @@
 [   
       
   {
-  "tag" : "AI art",
+  "tag" : "AI",
   "posts" : [
       
       "./AI-art.html"
@@ -13,37 +13,7 @@
     
       
   {
-  "tag" : "DIY hard",
-  "posts" : [
-      
-      "./author-website-gh-pages.html"
-      
-    ]
-  } ,
-    
-      
-  {
-  "tag" : "artificial intelligence",
-  "posts" : [
-      
-      "./deep-q-learning-tic-tac-toe.html"
-      
-    ]
-  } ,
-    
-      
-  {
-  "tag" : "bda",
-  "posts" : [
-      
-      "./bda.html"
-      
-    ]
-  } ,
-    
-      
-  {
-  "tag" : "blog",
+  "tag" : "DIY",
   "posts" : [
       
       "./author-website-gh-pages.html"
@@ -63,44 +33,12 @@
     
       
   {
-  "tag" : "coding",
+  "tag" : "erotica",
   "posts" : [
       
-      "./deep-q-learning-tic-tac-toe.html",
+      "./GitHub-vs-GitGub.html",
       
-      "./neural-network-optimization-methods.html",
-      
-      "./ML-Library-from-scratch.html"
-      
-    ]
-  } ,
-    
-      
-  {
-  "tag" : "creativity",
-  "posts" : [
-      
-      "./AI-art.html"
-      
-    ]
-  } ,
-    
-      
-  {
-  "tag" : "deep Neural networks",
-  "posts" : [
-      
-      "./neural-network-optimization-methods.html"
-      
-    ]
-  } ,
-    
-      
-  {
-  "tag" : "domus aeterna",
-  "posts" : [
-      
-      "./single-neuron-perceptron.html"
+      "./Horny-Jail.html"
       
     ]
   } ,
@@ -117,20 +55,10 @@
     
       
   {
-  "tag" : "fantasy",
+  "tag" : "git",
   "posts" : [
       
-      "./single-neuron-perceptron.html"
-      
-    ]
-  } ,
-    
-      
-  {
-  "tag" : "general blogging",
-  "posts" : [
-      
-      "./starting-the-adventure.html"
+      "./GitHub-vs-GitGub.html"
       
     ]
   } ,
@@ -140,113 +68,83 @@
   "tag" : "github",
   "posts" : [
       
-      "./author-website-gh-pages.html"
+      "./author-website-gh-pages.html",
+      
+      "./GitHub-vs-GitGub.html"
       
     ]
   } ,
     
       
   {
-  "tag" : "github pages",
+  "tag" : "kindle",
   "posts" : [
       
-      "./author-website-gh-pages.html"
+      "./Kindle-Vs-Vella.html",
+      
+      "./Horny-Jail.html"
       
     ]
   } ,
     
       
   {
-  "tag" : "id",
+  "tag" : "marketing",
   "posts" : [
       
-      "./picking-titles.html"
+      "./marketing-strategy.html"
       
     ]
   } ,
     
       
   {
-  "tag" : "life",
+  "tag" : "plotting",
   "posts" : [
       
-      "./starting-the-adventure.html"
+      "./save-the-cat.html"
       
     ]
   } ,
     
       
   {
-  "tag" : "machine learning",
+  "tag" : "publishing",
   "posts" : [
       
-      "./deep-q-learning-tic-tac-toe.html",
+      "./Kindle-Vs-Vella.html",
       
-      "./neural-network-optimization-methods.html",
-      
-      "./ML-Library-from-scratch.html"
+      "./Horny-Jail.html"
       
     ]
   } ,
     
       
   {
-  "tag" : "neural networks",
+  "tag" : "save the cat",
   "posts" : [
       
-      "./ML-Library-from-scratch.html"
+      "./save-the-cat.html"
       
     ]
   } ,
     
       
   {
-  "tag" : "optimization",
+  "tag" : "scrivener",
   "posts" : [
       
-      "./neural-network-optimization-methods.html"
+      "./save-the-cat.html"
       
     ]
   } ,
     
       
   {
-  "tag" : "pleasure",
+  "tag" : "social media",
   "posts" : [
       
-      "./picking-titles.html"
-      
-    ]
-  } ,
-    
-      
-  {
-  "tag" : "python",
-  "posts" : [
-      
-      "./deep-q-learning-tic-tac-toe.html",
-      
-      "./ML-Library-from-scratch.html"
-      
-    ]
-  } ,
-    
-      
-  {
-  "tag" : "reinforcement learning",
-  "posts" : [
-      
-      "./deep-q-learning-tic-tac-toe.html"
-      
-    ]
-  } ,
-    
-      
-  {
-  "tag" : "thoughts",
-  "posts" : [
-      
-      "./starting-the-adventure.html"
+      "./marketing-strategy.html"
       
     ]
   } ,
@@ -263,10 +161,24 @@
     
       
   {
+  "tag" : "vella",
+  "posts" : [
+      
+      "./Kindle-Vs-Vella.html",
+      
+      "./Horny-Jail.html"
+      
+    ]
+  } ,
+    
+      
+  {
   "tag" : "websites",
   "posts" : [
       
-      "./author-website-gh-pages.html"
+      "./author-website-gh-pages.html",
+      
+      "./marketing-strategy.html"
       
     ]
   } 
