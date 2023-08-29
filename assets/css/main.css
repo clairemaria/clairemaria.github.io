@@ -844,9 +844,11 @@ svg.menu-icon-house {
 
 .book-card-box li {
   position: relative;
+  padding: 10px;
   list-style: none;
   float: left;
-  width: 40%;
+  width: 25%;
+  min-width: 250px;
 }
 
 .post-card {
@@ -866,10 +868,12 @@ svg.menu-icon-house {
   background-repeat: no-repeat;
 }
 
+/*350x57*/
+
 .book-card-image {
   display: block;
   width: 100%;
-  min-height:600px;
+  min-height:350px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
