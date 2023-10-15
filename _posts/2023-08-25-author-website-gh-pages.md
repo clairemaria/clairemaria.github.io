@@ -26,7 +26,7 @@ GitHub has great articles on how to complete this process, but I want to documen
 
 ## 1. Github
 
-Match your author name to your [GitHub](www.github.com) account username. I (Vera Breen) might pick `verabreen` as my GitHub account name.
+Match your author name to your [GitHub](www.github.com) account username. I (Vera Briene) might pick `verabriene` as my GitHub account name.
 
 If you're new to git, consider using a tool like [Git Kraken](https://www.gitkraken.com/) to organize your project. 
 
@@ -37,9 +37,9 @@ Pick where your code will live. Each website will live in it's own project (work
 Complete "Creating Your Website", skip the last section "Change Title and Description." We'll deal with the title later.
 
 SO IMPORTANT!! This sets your default website URL, so use your author name! For me, that might be -
-- `verabreen.github.io`
-- `authorverabreen.github.io`
-- `vmbreen.github.io`
+- `verabriene.github.io`
+- `authorverabriene.github.io`
+- `vbriene.github.io`
 
 GitHub will give you these domain names for free, as long as they end in `github.io`. 
 
