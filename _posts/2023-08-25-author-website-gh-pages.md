@@ -7,7 +7,7 @@ date:   2023-08-24 15:14:20 -0600
 description: "Custom author websites can rock branding... but how to you set one up for free?"
 img: posts/20230824/computerScreen.jpeg
 tags: [websites, github, DIY]
-author: Vera Breen
+author: Vera Briene
 toc: no  # leave empty or erase for no TOC
 ---
 

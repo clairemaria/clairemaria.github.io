@@ -1,9 +1,9 @@
 # Site settings
-title: The Vera Breen - Author
+title: The Vera Briene - Author
 description: 'Artificial Intelligence trends and concepts made easy.' # this means to ignore newlines until "baseurl:"
 permalink: ':title:output_ext'
 baseurl: "/" # the subpath of your site, e.g. /blog
-url: "https://verabreen.com" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://verabriene.com" # the base hostname & protocol for your site, e.g. http://example.com
 logo: "/assets/img/branding/MVM-logo-full.svg"
 logo-icon: "/assets/img/branding/MVM-symbol.svg"
 logo-icon-SEO: "/assets/img/branding/MVM-symbol-black.png" # must be a non SVG file
@@ -24,7 +24,7 @@ logo-dark: "/assets/img/branding/MVM-logo-full.svg"
 highlight_theme: syntax-base16.monokai.dark # select a dark theme for the code highlighter if needed
 
 # Author settings
-author: Vera Breen
+author: Vera Briene
 author-pic: Myself-Neon.png
 about-author: Fantasy Romance and Erotica Author 
 

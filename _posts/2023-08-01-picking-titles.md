@@ -6,7 +6,7 @@ title: "Pleasure and Picking Titles"
 date: 2023-08-01
 img: posts/20230801/book.jpg
 tags: [titles]
-author: Vera Breen
+author: Vera Briene
 description: "Walking through my title-picking process."
 ---
 
