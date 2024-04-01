@@ -3,7 +3,7 @@ layout: post
 title: Beneath Dark Designs 
 date:   2024-02-27 13:32:20 -0600
 description: Book notes for upcoming fantasy romance
-img: /book/fb-banner-book.png
+img: /book/book-detail-banner.png
 tags: [book releases]
 author: Vera Briene
 ---
