@@ -1,5 +1,6 @@
 # Site settings
 title: The Vera Briene - Author
+email: verabriene@gmail.com
 description: 'Artificial Intelligence trends and concepts made easy.' # this means to ignore newlines until "baseurl:"
 permalink: ':title:output_ext'
 baseurl: "/" # the subpath of your site, e.g. /blog
@@ -32,10 +33,10 @@ about-author: Fantasy Romance and Erotica Author
 
 # Newsletter
 mailchimp: ""
+email: verabriene@gmail.com
 
 # Tracker
-analytics: G-R8SZS2YBZK
-fbadmin: ar.maybach
+
 
 # Paginate
 paginate: 6

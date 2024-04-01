@@ -3,16 +3,6 @@
 [   
       
   {
-  "tag" : "AI",
-  "posts" : [
-      
-      "./AI-art.html"
-      
-    ]
-  } ,
-    
-      
-  {
   "tag" : "DIY",
   "posts" : [
       
@@ -26,39 +16,7 @@
   "tag" : "book releases",
   "posts" : [
       
-      "./bda.html"
-      
-    ]
-  } ,
-    
-      
-  {
-  "tag" : "erotica",
-  "posts" : [
-      
-      "./GitHub-vs-GitGub.html",
-      
-      "./Horny-Jail.html"
-      
-    ]
-  } ,
-    
-      
-  {
-  "tag" : "ethics",
-  "posts" : [
-      
-      "./AI-art.html"
-      
-    ]
-  } ,
-    
-      
-  {
-  "tag" : "git",
-  "posts" : [
-      
-      "./GitHub-vs-GitGub.html"
+      "./beneath-dark-designs.html"
       
     ]
   } ,
@@ -68,105 +26,7 @@
   "tag" : "github",
   "posts" : [
       
-      "./author-website-gh-pages.html",
-      
-      "./GitHub-vs-GitGub.html"
-      
-    ]
-  } ,
-    
-      
-  {
-  "tag" : "kindle",
-  "posts" : [
-      
-      "./Kindle-Vs-Vella.html",
-      
-      "./Horny-Jail.html"
-      
-    ]
-  } ,
-    
-      
-  {
-  "tag" : "marketing",
-  "posts" : [
-      
-      "./marketing-strategy.html"
-      
-    ]
-  } ,
-    
-      
-  {
-  "tag" : "plotting",
-  "posts" : [
-      
-      "./save-the-cat.html"
-      
-    ]
-  } ,
-    
-      
-  {
-  "tag" : "publishing",
-  "posts" : [
-      
-      "./Kindle-Vs-Vella.html",
-      
-      "./Horny-Jail.html"
-      
-    ]
-  } ,
-    
-      
-  {
-  "tag" : "save the cat",
-  "posts" : [
-      
-      "./save-the-cat.html"
-      
-    ]
-  } ,
-    
-      
-  {
-  "tag" : "scrivener",
-  "posts" : [
-      
-      "./save-the-cat.html"
-      
-    ]
-  } ,
-    
-      
-  {
-  "tag" : "social media",
-  "posts" : [
-      
-      "./marketing-strategy.html"
-      
-    ]
-  } ,
-    
-      
-  {
-  "tag" : "titles",
-  "posts" : [
-      
-      "./picking-titles.html"
-      
-    ]
-  } ,
-    
-      
-  {
-  "tag" : "vella",
-  "posts" : [
-      
-      "./Kindle-Vs-Vella.html",
-      
-      "./Horny-Jail.html"
+      "./author-website-gh-pages.html"
       
     ]
   } ,
@@ -176,9 +36,7 @@
   "tag" : "websites",
   "posts" : [
       
-      "./author-website-gh-pages.html",
-      
-      "./marketing-strategy.html"
+      "./author-website-gh-pages.html"
       
     ]
   } 
